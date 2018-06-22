@@ -11,7 +11,7 @@
     "url": "git+https://github.com/WiiDemBears/wiidembears.github.io.git"
   },
   "author": "Ahmad, Jarman, Brandon, Luis",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "connect-flash": "^0.1.1",
