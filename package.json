@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/WiiDemBears/wiidembears.github.io.git"
   },
-  "author": "Luistics",
+  "author": "Ahmad, Jarman, Brandon, Luis",
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
