@@ -19,7 +19,6 @@ const passport = require('passport');
 
 //Require the path package. This is for naming paths in the directory.
 const path = require('path');
-
 //Set app, our webapp, to a new express object. This initializes a new app. From here, app represents our web-app.
 const app = express();
 
