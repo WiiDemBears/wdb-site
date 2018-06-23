@@ -9,4 +9,8 @@ module.exports = function(app, passport){
     app.get('/quotes', (req, res) =>{
         res.render('quotes');
     });
+
+    app.get('/memes', (req, res) =>{
+        res.render('memes');
+    });
 };
