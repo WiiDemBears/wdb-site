@@ -6,7 +6,7 @@ module.exports = function(app, passport) {
     res.render("index");
   });
 
-  app.get("/forgot_password", (req, res) => {
+  app.get("/forgot-password", (req, res) => {
     res.render("forgot_password");
   });
 
