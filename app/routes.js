@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('../app/models/user');
 
 module.exports = function(app, passport){
 
@@ -6,11 +7,20 @@ module.exports = function(app, passport){
         res.render('index');
     });
 
-    app.get('/quotes', (req, res) =>{
-        res.render('quotes');
-    });
 
-    app.get('/memes', (req, res) =>{
-        res.render('memes');
-    });
+    /*
+        Middleware functions are called between requests... 
+    */
+    function isLoggedIn(req, res, next){
+
+        if(req.isAuthenticated()){
+            return next();
+        }
+
+        res.redirect('/');
+    }
+
+
+
+
 };

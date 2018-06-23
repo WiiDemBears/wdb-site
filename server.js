@@ -1,6 +1,6 @@
 /*
     App.js, or server.js contains the entry point to the web app.
- */
+*/
 
 /* Dependencies */
 
