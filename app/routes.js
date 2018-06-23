@@ -7,6 +7,7 @@ module.exports = function(app, passport){
         res.render('index');
     });
 
+<<<<<<< HEAD
     app.get('/forgot_password', (req, res) => {
         res.render('forgot_password');
     });
@@ -27,6 +28,8 @@ module.exports = function(app, passport){
         res.render('register');
     });
 
+=======
+>>>>>>> baab64929582c0f8a033016066c8dc36657e85f3
     /*
         Middleware functions are called between requests... 
     */
