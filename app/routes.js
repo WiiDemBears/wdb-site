@@ -7,7 +7,6 @@ module.exports = function(app, passport){
         res.render('index');
     });
 
-
     /*
         Middleware functions are called between requests... 
     */
