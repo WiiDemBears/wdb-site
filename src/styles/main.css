@@ -15,6 +15,10 @@ label{
   width: 100px;
 }
 
+#caption1 {
+  text-align: center;
+}
+
 #story1 {
   display: block;
   margin-left: auto;
