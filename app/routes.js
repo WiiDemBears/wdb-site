@@ -7,7 +7,7 @@ module.exports = function(app, passport) {
   });
 
   app.get("/forgot-password", (req, res) => {
-    res.render("forgot_password");
+    res.render("forgot-password");
   });
 
   app.get("/memes", (req, res) => {
