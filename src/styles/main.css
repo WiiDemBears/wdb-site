@@ -3,6 +3,10 @@ body {
   background-color: black;
 }
 
+label{
+  color:white;
+}
+
 #yuta {
   position: absolute;
   top: 80%;
