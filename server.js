@@ -24,7 +24,7 @@ const app = express();
 
 
 //connect to passport configuration file, passing in passport package from above.
-require('./config/passport')(passport);
+//require('./config/passport')(passport);
 
 //import defined routes, passing in our passport strategy and our defined web-app.
 require('./app/routes.js')(app, passport);
