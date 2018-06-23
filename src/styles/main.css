@@ -1,6 +1,6 @@
 body {
   font-family: "Karla", sans-serif;
-  background-color: rgb(250, 250, 250);
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
 }
 
 #yuta {
