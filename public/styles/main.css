@@ -11,18 +11,6 @@ body {
   width: 100px;
 }
 
-#caption1 {
-  padding-top: 20px;
-  text-align: center;
-}
-
-#story1 {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 210px;
-}
-
 /*Centers item both horizontally and vertically*/
 .centered {
   position: absolute;
