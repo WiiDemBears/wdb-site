@@ -12,7 +12,7 @@
     "url": "git+https://github.com/WiiDemBears/wiidembears.github.io.git"
   },
   "author": "Luis Olivar, Ahmad Raza, Jarman Liu, Brandon Yee",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/WiiDemBears/wiidembears.github.io/issues"
   },
