@@ -30,6 +30,8 @@ body {
   text-decoration: none;
 }
 
-#forgot_password_button {
+#redirect_link {
   text-decoration: none;
+  color:black;
 }
+
