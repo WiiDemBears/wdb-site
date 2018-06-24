@@ -1,20 +1,20 @@
-<form class="container centered col-4">
+<form class="container centered col-4" action = "/register" method = "POST">
     <div class="form-group">
         <label for="exampleInputEmail1">First name</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Yo">
+        <input name = "firstname" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Yo">
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Last name</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Shi">
+        <input name = "lastname" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Shi">
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="thiccshi@gmail.com">
+        <input name = "email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="thiccshi@gmail.com">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Bloshi123">
+        <input name = "password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Bloshi123">
     </div>
     <br>
     <button type="submit" class="btn btn-dark">Register</button>

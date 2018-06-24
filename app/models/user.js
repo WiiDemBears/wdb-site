@@ -11,10 +11,9 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
 
     local:{
-        username: {
-            type: String,
-            unique: true
-        },
+        firstname: String,
+        lastname: String,
+        email: String,
         password: String,
     },
 
