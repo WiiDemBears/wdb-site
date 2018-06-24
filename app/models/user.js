@@ -16,7 +16,6 @@ const userSchema = new Schema({
             unique: true
         },
         password: String,
-        profile: {type:Schema.Types.ObjectId, ref: 'Profile'},
     },
 
 });
