@@ -22,6 +22,10 @@ module.exports = function(app, passport) {
     res.render("down");
   });
 
+  app.get("/login", (req, res) => {
+    res.render("login");
+  });
+  
   app.get("/register", (req, res) => {
     res.render("register");
   });
