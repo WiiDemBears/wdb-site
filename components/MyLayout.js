@@ -9,8 +9,13 @@ const layoutStyle = {
 const Layout = (props) => (
   <div style={layoutStyle}>
     <Header />
-    {props.children}
+    {props.children}<style global jsx>{`
+      body {
+        background: black;
+      }
+    `}</style>
   </div>
+  
 )
 
 export default Layout
