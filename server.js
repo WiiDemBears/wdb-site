@@ -1,6 +1,5 @@
-/*
-    App.js, or server.js contains the entry point to the web app.
-*/
+//App.js, or server.js contains the entry point to the web app.
+
 
 /* Dependencies */
 
@@ -13,8 +12,10 @@ const mongoose = require('mongoose');
 //Require express-session. This allows for user sessions.
 const session = require('express-session');
 
-//Require passport. This package allows for authentication of users throughout the app through the use of
-//various authentication strategies. This is further explained in /config/passport.js
+/*
+    Require passport. This package allows for authentication of users throughout the app through the use of
+    various authentication strategies. This is further explained in /config/passport.js
+*/
 const passport = require('passport');
 
 //Require the path package. This is for naming paths in the directory.
