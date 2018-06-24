@@ -22,3 +22,14 @@ body {
 #centerpiece {
   text-align: center;
 }
+
+#login_button {
+  font-size: 18px;
+  margin-right: 20px;
+  color: black;
+  text-decoration: none;
+}
+
+#forgot_password_button {
+  text-decoration: none;
+}
