@@ -1,13 +1,13 @@
-// This is the Link API
-import Link from "next/link";
+import React from "react"
+import Template from "../components/Layout"
 
-const Index = () => (
-  <div>
-    <Link href="/about">
-      <button>Go to About Page</button>
-    </Link>
-    <p>Hello Next.js</p>
-  </div>
-);
+const HomePage = () => (
+  <Template>
+    <div>
+      <h1>Under Construction</h1>
+      <h1>Yutas will keep you company till then</h1>
+    </div>
+  </Template>
+)
 
-export default Index;
+export default HomePage
