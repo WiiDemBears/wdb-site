@@ -1,6 +1,5 @@
 //App.js, or server.js contains the entry point to the web app.
 
-
 /* Dependencies */
 
 //Require Express framework for routing pages. This is further explained in /app/routes.js

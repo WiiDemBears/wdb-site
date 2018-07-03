@@ -1,8 +1,8 @@
-# WiiDemBears
+# WiiDemBears.Down
 
 ## "Down" Web App
 
-*todo add app description*  
+A webapp for organizing short-term events, such as video game sessions, quick gatherings, and  
 
 ## Overview of file structure
 
@@ -37,6 +37,19 @@ This project will make use of the MERN stack:
 * README.md
     * You're reading this right now, aren't you?
 
-## Use Cases
+## Use Cases For 0.1.0
 
-1) As a non-registered user, I can see Yuta. 
+As a non-registered user...
+
+* You can login to the Down app, register for an account, and view the splash page.
+
+As a registered user...
+    
+* You can create an event, view your current events, and your profile picture on your profile page. 
+* You have a friends list, which contains a list of other users of the Down webapp.
+
+## Implementation for Future Deployments
+
+In future releases, we hope to implement categories of friends. This will allow you to invite your food squad in one tap, without going through your list of gaming friends. 
+
+We also hope to eventually move to React.js and Redux, as this will allow for a better overall UI experience compared to barebones Bootstrap CSS with HTML templating. 
