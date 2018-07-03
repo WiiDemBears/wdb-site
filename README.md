@@ -2,15 +2,17 @@
 
 ## "Down" Web App
 
-A webapp for organizing short-term events, such as video game sessions, quick gatherings, and  
+A webapp for organizing short-term events, such as video game sessions, quick get-togethers, and any other spontaneous event.   
 
 ## Overview of file structure
 
-This project will make use of the MERN stack:
+This project will eventually make use of the MERN stack:
 * MongoDB (Database)
 * Express (Web Framework)
 * React.js (UI Framework)
 * Node.js (Javascript runtime environment)
+
+Version 0.1.0 will use Bootstrap and HTML templating for UI. 
 
 ### Explanation of Directory Structure
 
