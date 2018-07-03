@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 //App.js, or server.js contains the entry point to the web app.
-=======
-// App.js, or server.js contains the entry point to the web app.
->>>>>>> 56fe0e43cfe1374e27e8e456f9a9461aed8a4588
 
 /* Dependencies */
 
