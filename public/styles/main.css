@@ -33,3 +33,17 @@ body {
 #forgot_password {
   color: black;
 }
+
+#event_list {
+  padding-top: 10px;
+  background-color: inherit;
+}
+
+#fortnite_card {
+  width: 350px;
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+}
+
+#fortnite_image {
+  filter: brightness(50%);
+}
