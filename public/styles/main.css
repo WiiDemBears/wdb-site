@@ -51,6 +51,10 @@ body {
   margin: 15px 0;
 }
 
+.card:hover {
+  transform: scale(1.05);
+}
+
 .container {
   max-width: 850px;
   margin: 0 auto;
