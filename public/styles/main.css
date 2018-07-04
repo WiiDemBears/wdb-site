@@ -39,9 +39,28 @@ body {
   background-color: inherit;
 }
 
-#fortnite_card {
-  width: 350px;
-  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+@media screen and (min-width: 800px) {
+  .flex-container {
+    display: flex;
+  }
+}
+
+.card {
+  flex: 1 1 50%;
+  position: relative; 
+  margin: 15px 0;
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 5px 15px;
+}
+
+@media screen and (min-width: 800px) {
+  .card {
+    margin: .5rem;
+  }
 }
 
 #fortnite_image {
