@@ -15,6 +15,7 @@ const userSchema = new Schema({
         lastname: String,
         email: String,
         password: String,
+        friend_list: [Schema.Types.ObjectId],
     },
 
 });
