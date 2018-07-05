@@ -13,15 +13,15 @@ const userSchema = new Schema({
     local:{
         firstname: String,
         lastname: String,
-        email: String,
+        email: {type: String, unique: true},
         password: String,
         friend_list: [Schema.Types.ObjectId],
     },
 
 });
 
-
-userSchema.plugin(URLSlugs('local.username'));
+//default field for the slug is "slug"
+userSchema.plugin(URLSlugs('local.firstname local.lastname'));
 
 userSchema.methods.generateHash = function (password){
 

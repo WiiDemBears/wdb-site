@@ -52,6 +52,6 @@ As a registered user...
 
 ## Implementation for Future Deployments
 
-In future releases, we hope to implement categories of friends. This will allow you to invite your food squad in one tap, without going through your list of gaming friends. 
+In future releases, we will implement categories of friends. This will allow you to invite your food squad in one tap, without going through your list of gaming friends. 
 
-We also hope to eventually move to React.js and Redux, as this will allow for a better overall UI experience compared to barebones Bootstrap CSS with HTML templating. 
+Eventually we will move to React.js and Redux, as this will allow for a better overall UI experience compared to barebones CSS with HTML templating. 
