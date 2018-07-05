@@ -19,27 +19,17 @@
 </head>
 
 <body>
-
-    <!--Navbar-->
-    <ul id="navbar" class="topnav">
-        <li>
-            <a class="active" href="/">Wii Dem Bears</a>
-        </li>
-        <li>
-            <a href="/down">Down</a>
-        </li>
-        <li>
-            <a href="/quotes">Quotes</a>
-        </li>
-        <li>
-            <a href="/memes">Memes</a>
-        </li>
-
-        <li class="right">
-            <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a>
-        </li>
-
-    </ul>
+    <div class="topnav" id="myTopnav">
+        <a href="/" class="active">Wii Dem Bears</a>
+        <a href="/down">Down</a>
+        <a href="/quotes">Quotes</a>
+        <a href="/memes">Memes</a>
+        <div id="login_button">
+            <a onclick="document.getElementById('id01').style.display='block'">Login</a>
+        </div>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+    <!--old Navbar-->
 
     <!--Login Form-->
     <div id="id01" class="modal">
