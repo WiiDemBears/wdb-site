@@ -32,7 +32,8 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  .topnav a:not(:first-child), #login_button {
+  .topnav a:not(:first-child),
+  #login_button {
     display: none;
   }
   .topnav a.icon {
@@ -42,13 +43,16 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
   }
-  .topnav.responsive a, #login_button {
+  .topnav.responsive a,
+  #login_button {
     float: none;
     display: block;
     text-align: left;
@@ -89,7 +93,6 @@ body {
   padding-top: 10px;
   background-color: inherit;
 }
-
 
 /* Cards in down */
 @media screen and (min-width: 800px) {
