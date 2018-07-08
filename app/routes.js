@@ -1,76 +1,74 @@
-const mongoose = require("mongoose");
-const User = require("../app/models/user");
+const mongoose = require("mongoose")
+const User = require("../app/models/user")
 
 module.exports = function(app, passport) {
-
-  app.use((req, res, next) =>{
-
-    res.locals.user = req.user;
-    res.locals.error = req.flash('error');
-    next();
-
-  });
+  app.use((req, res, next) => {
+    res.locals.user = req.user
+    res.locals.error = req.flash("error")
+    next()
+  })
 
   app.get("/", (req, res) => {
-    res.render("index");
-  });
+    res.render("index")
+  })
 
   app.get("/forgot-password", (req, res) => {
-    res.render("forgot-password");
-  });
+    res.render("forgot-password")
+  })
 
   app.get("/memes", (req, res) => {
-    res.render("memes");
-  });
+    res.render("memes")
+  })
 
   app.get("/quotes", (req, res) => {
-    res.render("quotes");
-  });
+    res.render("quotes")
+  })
 
   app.get("/down", (req, res) => {
-    res.render("down");
-  });
+    res.render("down")
+  })
 
-  //Talk with group about the login and register forms i.e. where they will be GET requesting to
+  // Talk with group about the login and register forms i.e. where they will be GET requesting to
 
   app.get("/login", (req, res) => {
-    res.render("login");
-  });
+    res.render("login")
+  })
 
   app.get("/register", (req, res) => {
-    res.render("register");
-  });
+    res.render("register")
+  })
 
-  app.post('/login', passport.authenticate('local-login',{
+  app.post(
+    "/login",
+    passport.authenticate("local-login", {
+      successRedirect: "/",
+      failureRedirect: "/login",
+      failureFlash: true
+    })
+  )
 
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-  
-  }));
+  app.post(
+    "/register",
+    passport.authenticate("local-register", {
+      successRedirect: "/",
+      failureRedirect: "/register",
+      failureFlash: true
+    })
+  )
 
-  app.post("/register", passport.authenticate('local-register', {
-
-    successRedirect: '/',
-    failureRedirect: '/register',
-    failureFlash: true
-  
-  }));
-
-  app.get('/logout', function(req, res){
-
-    req.logOut();
-    res.redirect('/');
-  });
+  app.get("/logout", function(req, res) {
+    req.logOut()
+    res.redirect("/")
+  })
 
   /*
         Middleware functions are called between requests... 
     */
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
-      return next();
+      return next()
     }
 
-    res.redirect("/");
+    res.redirect("/")
   }
-};
+}
