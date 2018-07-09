@@ -28,12 +28,15 @@
         <a id="login_button" onclick="document.getElementById('id01').style.display='block'">Login</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
+
     <!-- Login Form -->
     <div id="id01" class="modal">
-        <form class="modal-content animated slideInUp" action="/action_page.php">
-            <form class="modal-content animate" action="/login" method: "POST">
+        <div class="modal-content">
+            <form class="form-login" action="/login" method: "POST">
                 <div class="grid-container">
-                    <h1 class="grid-item">Login</h1>
+                    <div class="grid-item">
+                        <h1 class="btn">Login</h1>
+                    </div>
                     <!--   
                     Todo: Change class and format this error message appropriately. 
                     If there is an error, passport will capture it and connect-flash will display it.
@@ -65,13 +68,15 @@
                     </div>
                 </div>
             </form>
+        </div>
     </div>
-    <!-- Register Form -->
+
     <div id="id02" class="modal">
-        <form class="modal-content animate" action="/register" method: "POST">
-            <div class="grid-container">
-                <h1 class="grid-item">Register</h1>
-                <!--   
+        <div class="modal-content">
+            <form class="form-register" action="/register" method: "POST">
+                <div class="grid-container">
+                    <h1 class="grid-item">Register</h1>
+                    <!--   
                     Todo: Change class and format this error message appropriately. 
                     If there is an error, passport will capture it and connect-flash will display it.
 
@@ -79,41 +84,42 @@
                         <div class = "alert alert-danger">{{error}}</div>
                     {{/if}}
                 -->
-                <label class="grid-item" for="fname">
-                    <b>First Name</b>
-                </label>
-                <div class="grid-item">
-                    <input class="grid-item" type="text" placeholder="John" name="firstname" required>
+                    <label class="grid-item" for="fname">
+                        <b>First Name</b>
+                    </label>
+                    <div class="grid-item">
+                        <input class="grid-item" type="text" placeholder="John" name="firstname" required>
+                    </div>
+                    <label class="grid-item" for="lname">
+                        <b>Last Name</b>
+                    </label>
+                    <div class="grid-item">
+                        <input class="grid-item" type="text" placeholder="Doe" name="lastname" required>
+                    </div>
+                    <label class="grid-item" for="email">
+                        <b>Email</b>
+                    </label>
+                    <div class="grid-item">
+                        <input class="grid-item" type="text" placeholder="johndoe@gmail.com" name="email" required>
+                    </div>
+                    <label class="grid-item" for="uname">
+                        <b>Username</b>
+                    </label>
+                    <div class="grid-item">
+                        <input class="grid-item" type="text" placeholder="Bloshi" name="username" required>
+                    </div>
+                    <label class="grid-item" for="psw">
+                        <b>Password</b>
+                    </label>
+                    <div class="grid-item">
+                        <input class="grid-item" type="password" placeholder="Yuta123" name="password" required>
+                    </div>
+                    <div class="grid-item">
+                        <button type="submit">Submit</button>
+                    </div>
                 </div>
-                <label class="grid-item" for="lname">
-                    <b>Last Name</b>
-                </label>
-                <div class="grid-item">
-                    <input class="grid-item" type="text" placeholder="Doe" name="lastname" required>
-                </div>
-                <label class="grid-item" for="email">
-                    <b>Email</b>
-                </label>
-                <div class="grid-item">
-                    <input class="grid-item" type="text" placeholder="johndoe@gmail.com" name="email" required>
-                </div>
-                <label class="grid-item" for="uname">
-                    <b>Username</b>
-                </label>
-                <div class="grid-item">
-                    <input class="grid-item" type="text" placeholder="Bloshi" name="username" required>
-                </div>
-                <label class="grid-item" for="psw">
-                    <b>Password</b>
-                </label>
-                <div class="grid-item">
-                    <input class="grid-item" type="password" placeholder="Yuta123" name="password" required>
-                </div>
-                <div class="grid-item">
-                    <button type="submit">Submit</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 
     <!--Handlebars Body-->

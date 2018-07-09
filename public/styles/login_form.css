@@ -18,6 +18,9 @@
   text-align: right;
   padding-right: 25px;
 }
+#forgotpass a {
+  text-decoration: none;
+}
 /* Input fields */
 input[type="text"],
 input[type="password"] {
@@ -62,7 +65,6 @@ button:hover {
 .modal-content {
   background-color: #ffffff;
   margin: 5% auto 5% auto; /* 5% from the top, 5% from the bottom and centered */
-  border: 1px solid #888;
   width: 400px; /* Could be more or less, depending on screen size */
   border-radius: 10px;
 }
