@@ -19,6 +19,7 @@ body {
 }
 .topnav #login_button {
   float: right;
+  cursor: pointer;
 }
 .topnav a {
   float: left;
@@ -28,9 +29,6 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-}
-#login_button.hover {
-  cursor: pointer;
 }
 .topnav .icon {
   display: none;
