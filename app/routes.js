@@ -1,5 +1,6 @@
 // const mongoose = require("mongoose");
 // const User = require("../app/models/user");
+const Quote = require("../app/models/quote");
 
 module.exports = function(app, passport) {
   app.use((req, res, next) => {
@@ -21,7 +22,12 @@ module.exports = function(app, passport) {
   });
 
   app.get("/quotes", (req, res) => {
-    res.render("quotes");
+    Quote.find({}, function(err, quotes) {
+      if (err) {
+        console.log(err);
+      }
+      res.render("quotes", { allQuotes: quotes });
+    });
   });
 
   app.get("/down", (req, res) => {
