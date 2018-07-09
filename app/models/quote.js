@@ -2,8 +2,8 @@
     Quote model for Database.
  */
 
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const quoteSchema = new Schema({
   postedUser: {
@@ -14,4 +14,4 @@ const quoteSchema = new Schema({
   },
 
   timestamps: true
-})
+});
