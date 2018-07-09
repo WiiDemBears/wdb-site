@@ -25,14 +25,12 @@
         <a href="/down">Down</a>
         <a href="/quotes">Quotes</a>
         <a href="/memes">Memes</a>
-        <div id="login_button">
-            <a onclick="document.getElementById('id01').style.display='block'">Login</a>
-        </div>
+        <a id="login_button" onclick="document.getElementById('id01').style.display='block'">Login</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
     <!-- Login Form -->
     <div id="id01" class="modal">
-        <form class="modal-content animate" action="/action_page.php">
+        <form class="modal-content animated slideInUp" action="/action_page.php">
             <div class="grid-container">
                 <h1 class="grid-item">Login</h1>
                 <label class="grid-item" for="uname">
@@ -54,7 +52,7 @@
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
                 <div class="grid-item">
-                    <button type="submit ">Login</button>
+                    <button type="submit">Login</button>
                 </div>
             </div>
         </form>
