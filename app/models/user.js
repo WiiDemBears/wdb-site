@@ -12,6 +12,7 @@ const userSchema = new Schema({
   local: {
     firstname: String,
     lastname: String,
+    username: { type: String, unique: true },
     email: { type: String, unique: true },
     password: String,
     friend_list: [Schema.Types.ObjectId]
@@ -19,7 +20,7 @@ const userSchema = new Schema({
 });
 
 // default field for the slug is "slug"
-userSchema.plugin(URLSlugs("local.firstname local.lastname"));
+userSchema.plugin(URLSlugs("username"));
 
 userSchema.methods.generateHash = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);

@@ -30,20 +30,32 @@
     </div>
     <!-- Login Form -->
     <div id="id01" class="modal">
+<<<<<<< HEAD
         <form class="modal-content animated slideInUp" action="/action_page.php">
+=======
+        <form class="modal-content animate" action="/login" method: "POST">
+>>>>>>> 206e6290fad57aae113bdf414a4bd1088668ce35
             <div class="grid-container">
                 <h1 class="grid-item">Login</h1>
+                <!--   
+                    Todo: Change class and format this error message appropriately. 
+                    If there is an error, passport will capture it and connect-flash will display it.
+
+                    {{#if error}}
+                        <div class = "alert alert-danger">{{error}}</div>
+                    {{/if}}
+                -->
                 <label class="grid-item" for="uname">
                     <b>Username</b>
                 </label>
                 <div class="grid-item">
-                    <input class="grid-item" type="text" placeholder="Bloshi" name="uname" required>
+                    <input class="grid-item" type="text" placeholder="Bloshi" name="username" required>
                 </div>
                 <label class="grid-item" for="psw">
                     <b>Password</b>
                 </label>
                 <div class="grid-item">
-                    <input class="grid-item" type="password" placeholder="Yuta123" name="psw" required>
+                    <input class="grid-item" type="password" placeholder="Yuta123" name="password" required>
                 </div>
                 <p class="grid-item">
                     <a href="/forgot_password">Forgot password?</a>
@@ -59,20 +71,28 @@
     </div>
     <!-- Register Form -->
     <div id="id02" class="modal">
-        <form class="modal-content animate" action="/action_page.php">
+        <form class="modal-content animate" action="/register" method: "POST">
             <div class="grid-container">
                 <h1 class="grid-item">Register</h1>
+                <!--   
+                    Todo: Change class and format this error message appropriately. 
+                    If there is an error, passport will capture it and connect-flash will display it.
+
+                    {{#if error}}
+                        <div class = "alert alert-danger">{{error}}</div>
+                    {{/if}}
+                -->
                 <label class="grid-item" for="fname">
                     <b>First Name</b>
                 </label>
                 <div class="grid-item">
-                    <input class="grid-item" type="text" placeholder="John" name="fname" required>
+                    <input class="grid-item" type="text" placeholder="John" name="firstname" required>
                 </div>
                 <label class="grid-item" for="lname">
                     <b>Last Name</b>
                 </label>
                 <div class="grid-item">
-                    <input class="grid-item" type="text" placeholder="Doe" name="lname" required>
+                    <input class="grid-item" type="text" placeholder="Doe" name="lastname" required>
                 </div>
                 <label class="grid-item" for="email">
                     <b>Email</b>
@@ -84,16 +104,16 @@
                     <b>Username</b>
                 </label>
                 <div class="grid-item">
-                    <input class="grid-item" type="text" placeholder="Bloshi" name="uname" required>
+                    <input class="grid-item" type="text" placeholder="Bloshi" name="username" required>
                 </div>
                 <label class="grid-item" for="psw">
                     <b>Password</b>
                 </label>
                 <div class="grid-item">
-                    <input class="grid-item" type="password" placeholder="Yuta123" name="psw" required>
+                    <input class="grid-item" type="password" placeholder="Yuta123" name="password" required>
                 </div>
                 <div class="grid-item">
-                    <button type="submit ">Submit</button>
+                    <button type="submit">Submit</button>
                 </div>
             </div>
         </form>
