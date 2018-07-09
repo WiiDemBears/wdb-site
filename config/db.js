@@ -10,7 +10,6 @@ if (process.env.NODE_ENV === "PRODUCTION") {
   const data = fs.readFileSync(fn);
 
   const conf = JSON.parse(data);
-
   dbconf = conf.dbconf;
 } else {
   dbconf = "mongodb://localhost/localtesting";
