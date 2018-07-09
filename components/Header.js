@@ -1,9 +1,9 @@
-import React from "react"
-import Link from "next/link"
+import React from "react";
+import Link from "next/link";
 
 const linkStyle = {
   marginRight: 15
-}
+};
 
 const Header = () => (
   <nav>
@@ -44,6 +44,6 @@ const Header = () => (
       }
     `}</style>
   </nav>
-)
+);
 
-export default Header
+export default Header;

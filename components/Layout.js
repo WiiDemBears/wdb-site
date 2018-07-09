@@ -1,6 +1,6 @@
-import React from "react"
-import Header from "./MaterialHeader"
-import PropTypes from "prop-types"
+import React from "react";
+import Header from "./MaterialHeader";
+import PropTypes from "prop-types";
 
 const Layout = props => (
   <div>
@@ -12,6 +12,6 @@ const Layout = props => (
       }
     `}</style>
   </div>
-)
+);
 
-export default Layout
+export default Layout;
