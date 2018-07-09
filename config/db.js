@@ -15,6 +15,4 @@ if (process.env.MONGODB_URI) {
   dbconf = conf.dbconf;
 }
 
-console.log(dbconf);
-console.log(process.env.NODE_ENV);
 mongoose.connect(dbconf);
