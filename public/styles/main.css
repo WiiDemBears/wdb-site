@@ -34,9 +34,7 @@ body {
   display: none;
 }
 #yuta {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
   margin-top: 10%;
 }
 @media screen and (max-height: 600px) {
