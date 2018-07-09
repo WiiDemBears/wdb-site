@@ -19,6 +19,7 @@ body {
 }
 .topnav #login_button {
   float: right;
+  cursor: pointer;
 }
 .topnav a {
   float: left;
@@ -29,16 +30,11 @@ body {
   text-decoration: none;
   font-size: 17px;
 }
-#login_button.hover {
-  cursor: pointer;
-}
 .topnav .icon {
   display: none;
 }
 #yuta {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
   margin-top: 10%;
 }
 @media screen and (max-height: 600px) {
