@@ -1,5 +1,5 @@
-import React from "react"
-import Template from "../components/Layout"
+import React from "react";
+import Template from "../components/Layout";
 
 const HomePage = () => (
   <Template>
@@ -8,6 +8,6 @@ const HomePage = () => (
       <h1>Yutas will keep you company till then</h1>
     </div>
   </Template>
-)
+);
 
-export default HomePage
+export default HomePage;
