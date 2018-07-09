@@ -4,7 +4,7 @@
 module.exports = function(app, passport) {
   app.use((req, res, next) => {
     res.locals.user = req.user;
-    res.locals.error = req.flash("error");
+    // res.locals.error = req.flash("error");
     next();
   });
 

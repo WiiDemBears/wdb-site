@@ -40,6 +40,9 @@ app.use(express.urlencoded({ extended: false }));
 // set a new static path for serving static files. Namely, the public folder.
 app.use(express.static(path.join(__dirname, "public")));
 
+// enable flash message for login/register errors
+app.use(flash());
+
 // app startup. If PORT is not defined, use port 3000. Log the port out to the console.
 // Normally, the app is started as defined in the README (node app.js). But Heroku is weird about it...
 app.listen(process.env.PORT || 3000);
