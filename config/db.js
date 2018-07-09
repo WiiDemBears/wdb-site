@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 
 let dbconf;
 
-if (process.env.NODE_ENV === "PRODUCTION") {
+if (process.env.MONGODB_URI) {
+  dbconf = process.env.MONGODB_URI;
+} else {
   const fs = require("fs");
   const path = require("path");
 
@@ -11,8 +13,8 @@ if (process.env.NODE_ENV === "PRODUCTION") {
 
   const conf = JSON.parse(data);
   dbconf = conf.dbconf;
-} else {
-  dbconf = "mongodb://localhost/localtesting";
 }
 
+console.log(dbconf);
+console.log(process.env.NODE_ENV);
 mongoose.connect(dbconf);
