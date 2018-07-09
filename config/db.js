@@ -1,19 +1,19 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-let dbconf
+let dbconf;
 
 if (process.env.NODE_ENV === "PRODUCTION") {
-  const fs = new require("fs")
-  const path = require("path")
+  const fs = require("fs");
+  const path = require("path");
 
-  const fn = path.join(__dirname, "config.json")
-  const data = fs.readFileSync(fn)
+  const fn = path.join(__dirname, "config.json");
+  const data = fs.readFileSync(fn);
 
-  const conf = JSON.parse(data)
+  const conf = JSON.parse(data);
 
-  dbconf = conf.dbconf
+  dbconf = conf.dbconf;
 } else {
-  dbconf = "mongodb://localhost/localtesting"
+  dbconf = "mongodb://localhost/localtesting";
 }
 
-mongoose.connect(dbconf)
+mongoose.connect(dbconf);
