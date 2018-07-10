@@ -48,7 +48,7 @@ module.exports = function(app, passport) {
     "/login",
     passport.authenticate("local-login", {
       successRedirect: "/",
-      failureRedirect: "/login",
+      failureRedirect: "/",
       failureFlash: true
     })
   );
@@ -57,7 +57,7 @@ module.exports = function(app, passport) {
     "/register",
     passport.authenticate("local-register", {
       successRedirect: "/",
-      failureRedirect: "/register",
+      failureRedirect: "/",
       failureFlash: true
     })
   );

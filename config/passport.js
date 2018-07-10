@@ -16,25 +16,27 @@ module.exports = function(passport) {
     "local-register",
     new LocalStrategy(
       {
-        emailField: "email",
+        usernameField: "username",
         passworldField: "password",
         passReqToCallback: true
       },
 
-      function(req, email, password, done) {
+      function(req, username, password, done) {
         process.nextTick(function() {
-          User.findOne({ "local.email": email }, function(err, user) {
+          User.findOne({ "local.username": username }, function(err, user) {
             if (err) return done(err);
 
             if (user)
               return done(null, false, {
-                message: "That email is already registered for an account."
+                message: "That username is already taken."
               });
             else {
               const newUser = new User();
-              newUser.local.email = email;
+              newUser.local.username = username;
+              newUser.local.email = req.body.email;
               newUser.local.firstname = req.body.firstname;
               newUser.local.lastname = req.body.lastname;
+              newUser.local.password = newUser.generateHash(password);
 
               newUser.save(function(err) {
                 if (err) throw err;
@@ -51,27 +53,29 @@ module.exports = function(passport) {
     "local-login",
     new LocalStrategy(
       {
-        usernameField: "email",
+        usernameField: "username",
         passwordField: "password",
         passReqToCallback: true
       },
 
-      function(req, email, password, done) {
-        User.findOne({ "local.email": email }, function(err, user) {
+      function(req, username, password, done) {
+        User.findOne({ "local.username": username }, function(err, user) {
           if (err) return done(err);
+
+          // for deploy, change this to one large message. This should not tell the user whether the username or password is the incorrect key.
 
           if (!user)
             return done(
               null,
               false,
-              req.flash("loginMessage", "Email does not exist.")
+              req.flash("loginMessage", "Error with login. Wrong username.")
             );
 
           if (!user.validPassword(password))
             return done(
               null,
               false,
-              req.flash("loginMessage", "Oops! Wrong password.")
+              req.flash("loginMessage", "Error with login. Wrong password")
             );
 
           return done(null, user);
