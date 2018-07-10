@@ -25,6 +25,7 @@ const path = require("path");
 // Set app, our webapp, to a new express object. This initializes a new app. From here, app represents our web-app.
 const app = express();
 
+// require the database config file. (Add EncodeURI)
 require("./config/db.js");
 
 // connect to passport configuration file, passing in passport package from above.
