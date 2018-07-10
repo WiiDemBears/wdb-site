@@ -1,73 +1,47 @@
-<div id="event_list" class="container col-10">
-    <h1 class="display-4">Events</h1>
-    <hr class="my-2">
-    <div class="container">
-        <div class="flex-container">
-            <!-- Card 1 -->
-            <div id="fortnite_card" class="card bg-dark text-white">
-                <img id="fortnite_image" class="card-img" src="images/fortnite.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                    <div class="card-content">
-                        <h4 class="card-title">Fortnite</h4>
-                        <p class="card-text">When: 8pm today</p>
-                        <div style="font-size: 12px;">
-                            <p class="card-text">6 - Going</p>
-                            <p class="card-text">3 - Undecided</p>
-                            <p class="card-text">1 - Not Going</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<link rel="stylesheet" type="text/css" href="/styles/card.css">
 
-            <!-- Card 2 -->
-            <div id="fortnite_card_2" class="card bg-dark text-white">
-                <img id="fortnite_image" class="card-img" src="images/fortnite.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                    <div class="card-content">
-                        <h4 class="card-title">Fortnite</h4>
-                        <p class="card-text">When: 8pm tomorrow</p>
-                        <div style="font-size: 12px;">
-                            <p class="card-text">6 - Going</p>
-                            <p class="card-text">3 - Undecided</p>
-                            <p class="card-text">1 - Not Going</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="grid-container">
+    <div id="grid-item fortnite" class="card">
+        <div class="card_container">
+            <h2>
+                <b>Fortnite</b>
+            </h2>
+            <p>@8pm today</p>
         </div>
-
-            <!-- Card 3 -->
-            <div class="flex-container">
-            <div id="fortnite_card_3" class="card bg-dark text-white">
-                <img id="fortnite_image" class="card-img" src="images/fortnite.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                    <div class="card-content">
-                        <h4 class="card-title">Fortnite</h4>
-                        <p class="card-text">When: 8pm today</p>
-                        <div style="font-size: 12px;">
-                            <p class="card-text">6 - Going</p>
-                            <p class="card-text">3 - Undecided</p>
-                            <p class="card-text">1 - Not Going</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div id="fortnite_card_4" class="card bg-dark text-white">
-                <img id="fortnite_image" class="card-img" src="images/fortnite.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                    <div class="card-content">
-                        <h4 class="card-title">Fortnite</h4>
-                        <p class="card-text">When: 8pm tomorrow</p>
-                        <div style="font-size: 12px;">
-                            <p class="card-text">6 - Going</p>
-                            <p class="card-text">3 - Undecided</p>
-                            <p class="card-text">1 - Not Going</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="panel">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card_container" class="panel">
+            <h2>
+                <b>Mad for Chicken</b>
+            </h2>
+            <p>@10pm tomorrow</p>
+        </div>
+        <div id="card_div" class="panel">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.9386510393183!2d-73.80996268492704!3d40.76337404240854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c26025eb7cb8f9%3A0x487e3a231fb2d99e!2sMad+for+Chicken!5e0!3m2!1sen!2sus!4v1531174309194"
+                width="380px" height="200px" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </div>
 </div>
+
+<script>
+    var acc = document.getElementsByClassName("card_container");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
