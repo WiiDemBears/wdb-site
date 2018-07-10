@@ -58,7 +58,7 @@
                         <input class="grid-item" type="password" placeholder="Yuta123" name="password" required>
                     </div>
                     <div id="forgotpass" class="grid-item">
-                        <a href="/forgot_password">Forgot password?</a>
+                        <a href="/forgot-password">Forgot password?</a>
                     </div>
                     <label class="grid-item" id="checkbox">
                         <input type="checkbox" checked="checked" name="remember"> Remember me
@@ -67,56 +67,12 @@
                         <button type="submit">Login</button>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="id02" class="modal">
-        <div class="modal-content">
-            <form class="form-register" action="/register" method: "POST">
-                <div class="grid-container">
-                    <h1 class="grid-item">Register</h1>
-                    <!--   
-                    Todo: Change class and format this error message appropriately. 
-                    If there is an error, passport will capture it and connect-flash will display it.
-
-                    {{#if error}}
-                        <div class = "alert alert-danger">{{error}}</div>
-                    {{/if}}
-                -->
-                    <label class="grid-item" for="fname">
-                        <b>First Name</b>
-                    </label>
-                    <div class="grid-item">
-                        <input class="grid-item" type="text" placeholder="John" name="firstname" required>
-                    </div>
-                    <label class="grid-item" for="lname">
-                        <b>Last Name</b>
-                    </label>
-                    <div class="grid-item">
-                        <input class="grid-item" type="text" placeholder="Doe" name="lastname" required>
-                    </div>
-                    <label class="grid-item" for="email">
-                        <b>Email</b>
-                    </label>
-                    <div class="grid-item">
-                        <input class="grid-item" type="text" placeholder="johndoe@gmail.com" name="email" required>
-                    </div>
-                    <label class="grid-item" for="uname">
-                        <b>Username</b>
-                    </label>
-                    <div class="grid-item">
-                        <input class="grid-item" type="text" placeholder="Bloshi" name="username" required>
-                    </div>
-                    <label class="grid-item" for="psw">
-                        <b>Password</b>
-                    </label>
-                    <div class="grid-item">
-                        <input class="grid-item" type="password" placeholder="Yuta123" name="password" required>
-                    </div>
-                    <div class="grid-item">
-                        <button type="submit">Submit</button>
-                    </div>
+                <div id="signup_link" class="grid-item">
+                    <p>Don't have an account?
+                        <span>
+                            <a id="signup_link" href="/register">Sign Up</a>
+                        </span>
+                    </p>
                 </div>
             </form>
         </div>
