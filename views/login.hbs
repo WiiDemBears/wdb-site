@@ -1,17 +1,12 @@
 <div class="modal-content">
-    <form class="form-login" action="/login" method: "POST">
+    <form class="form-login" action="/login" method="POST">
         <div class="grid-container">
             <div class="grid-item">
                 <h1 class="btn">Login</h1>
             </div>
-            <!--   
-                    Todo: Change class and format this error message appropriately. 
-                    If there is an error, passport will capture it and connect-flash will display it.
-
-                    {{#if error}}
-                        <div class = "alert alert-danger">{{error}}</div>
-                    {{/if}}
-                -->
+            {{#if error}}
+            <div id="error_message" class="grid-item">{{error}}</div>
+            {{/if}}
             <label class="grid-item" for="uname">
                 <b>Username</b>
             </label>
