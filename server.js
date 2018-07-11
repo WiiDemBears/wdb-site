@@ -41,10 +41,13 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 
+/*
+  TODO : ADD SESSION STORE FOR PRODUCTION ENVIRONMENTS
+*/
 app.use(
   session({
     secret: "suchsecretwowe!",
-    resave: true,
+    resave: false,
     saveUninitialized: true
   })
 );
