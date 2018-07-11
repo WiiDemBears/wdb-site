@@ -5,7 +5,7 @@ const Quote = require("../app/models/quote");
 module.exports = function(app, passport) {
   app.use((req, res, next) => {
     res.locals.user = req.user;
-    // res.locals.error = req.flash("error");
+    res.locals.error = req.flash("error");
     next();
   });
 
@@ -17,11 +17,11 @@ module.exports = function(app, passport) {
     res.render("forgot-password");
   });
 
-  app.get("/memes", (req, res) => {
+  app.get("/memes", isLoggedIn, (req, res) => {
     res.render("memes");
   });
 
-  app.get("/quotes", (req, res) => {
+  app.get("/quotes", isLoggedIn, (req, res) => {
     Quote.find({}, function(err, quotes) {
       if (err) {
         console.log(err);
@@ -30,7 +30,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.get("/down", (req, res) => {
+  app.get("/down", isLoggedIn, (req, res) => {
     res.render("down");
   });
 
@@ -67,16 +67,10 @@ module.exports = function(app, passport) {
     res.redirect("/");
   });
 
-  /*
-        Middleware functions are called between requests... 
-    
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
     }
-
-    res.redirect("/");
+    res.redirect("/login");
   }
-
-  */
 };

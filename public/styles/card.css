@@ -1,8 +1,9 @@
 .grid-container {
   display: grid;
-  grid-template-columns: auto;
-  padding-top: 10px;
-  align-content: center;
+  grid-template-columns: 400px 400px;
+  grid-auto-rows: 200px;
+  grid-gap: 20px;
+  justify-content: center;
 }
 
 .grid-item {
@@ -33,7 +34,31 @@
   transition: max-height 0.2s ease-out;
 }
 
-@media only screen and (max-width: 600px) {
-  .card {
+.dot {
+  height: 25px;
+  width: 25px;
+  background-image: url("/images/fortnite.jpg");
+  border-radius: 50%;
+  float: right;
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 800px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-auto-rows: 135px;
+    grid-gap: 20px;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    grid-auto-rows: 200px;
+    grid-gap: 20px;
+    justify-content: center;
   }
 }

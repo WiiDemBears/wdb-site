@@ -13,6 +13,9 @@ body {
     #24c6dc
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+#error_message {
+  color: red;
+}
 /* nav */
 .topnav {
   overflow: hidden;
@@ -20,6 +23,10 @@ body {
 .topnav #login_button {
   float: right;
   cursor: pointer;
+}
+.topnav #user_info {
+  float: right;
+  cursor: default;
 }
 .topnav a {
   float: left;
