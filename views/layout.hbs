@@ -25,13 +25,14 @@
         <a href="/down">Down</a>
         <a href="/quotes">Quotes</a>
         <a href="/memes">Memes</a>
+        <a href="https://github.com/WiiDemBears/wdb-site/issues">Report A Bug</a>
         {{#if user}}
         <a id="login_button" href="/logout">Logout</a>
         <a id="user_info">Logged in as {{user.local.username}}</a>
         {{else}}
         <a id="login_button" href="/login">Login</a>
-        {{/if}}
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+        {{/if}}
     </div>
 
 
