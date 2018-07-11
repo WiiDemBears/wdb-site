@@ -36,6 +36,10 @@ module.exports = function(app, passport) {
 
   // Talk with group about the login and register forms i.e. where they will be GET requesting to
 
+  app.get("/login", (req, res) => {
+    res.render("login");
+  });
+
   app.get("/register", (req, res) => {
     res.render("register");
   });
@@ -44,7 +48,7 @@ module.exports = function(app, passport) {
     "/login",
     passport.authenticate("local-login", {
       successRedirect: "/",
-      failureRedirect: "/",
+      failureRedirect: "/login",
       failureFlash: true
     })
   );

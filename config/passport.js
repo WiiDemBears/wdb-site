@@ -66,12 +66,12 @@ module.exports = function(passport) {
 
           if (!user)
             return done(null, false, {
-              message: "Error with login. Wrong password"
+              message: "Error with login. Username doesn't exist."
             });
 
           if (!user.validPassword(password))
             return done(null, false, {
-              message: "Error with login. Wrong password"
+              message: "Error with login. Wrong password."
             });
 
           return done(null, user);
