@@ -21,6 +21,10 @@ body {
   float: right;
   cursor: pointer;
 }
+.topnav #user_info {
+  float: right;
+  cursor: default;
+}
 .topnav a {
   float: left;
   display: block;

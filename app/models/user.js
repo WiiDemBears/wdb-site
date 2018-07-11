@@ -20,7 +20,7 @@ const userSchema = new Schema({
 });
 
 // default field for the slug is "slug"
-userSchema.plugin(URLSlugs("username"));
+userSchema.plugin(URLSlugs("local.username"));
 
 userSchema.methods.generateHash = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);

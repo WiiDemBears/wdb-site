@@ -5,7 +5,7 @@ const Quote = require("../app/models/quote");
 module.exports = function(app, passport) {
   app.use((req, res, next) => {
     res.locals.user = req.user;
-    // res.locals.error = req.flash("error");
+    res.locals.error = req.flash("error");
     next();
   });
 
@@ -36,10 +36,6 @@ module.exports = function(app, passport) {
 
   // Talk with group about the login and register forms i.e. where they will be GET requesting to
 
-  app.get("/login", (req, res) => {
-    res.render("login");
-  });
-
   app.get("/register", (req, res) => {
     res.render("register");
   });
@@ -57,7 +53,7 @@ module.exports = function(app, passport) {
     "/register",
     passport.authenticate("local-register", {
       successRedirect: "/",
-      failureRedirect: "/",
+      failureRedirect: "/register",
       failureFlash: true
     })
   );
@@ -67,16 +63,10 @@ module.exports = function(app, passport) {
     res.redirect("/");
   });
 
-  /*
-        Middleware functions are called between requests... 
-    
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
     }
-
     res.redirect("/");
   }
-
-  */
 };
