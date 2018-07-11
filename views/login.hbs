@@ -1,0 +1,45 @@
+<div class="modal-content">
+    <form class="form-login" action="/login" method: "POST">
+        <div class="grid-container">
+            <div class="grid-item">
+                <h1 class="btn">Login</h1>
+            </div>
+            <!--   
+                    Todo: Change class and format this error message appropriately. 
+                    If there is an error, passport will capture it and connect-flash will display it.
+
+                    {{#if error}}
+                        <div class = "alert alert-danger">{{error}}</div>
+                    {{/if}}
+                -->
+            <label class="grid-item" for="uname">
+                <b>Username</b>
+            </label>
+            <div class="grid-item">
+                <input class="grid-item" type="text" placeholder="Bloshi" name="username" required>
+            </div>
+            <label class="grid-item" for="psw">
+                <b>Password</b>
+            </label>
+            <div class="grid-item">
+                <input class="grid-item" type="password" placeholder="Yuta123" name="password" required>
+            </div>
+            <div id="forgotpass" class="grid-item">
+                <a href="/forgot-password">Forgot password?</a>
+            </div>
+            <label class="grid-item" id="checkbox">
+                <input type="checkbox" name="remember"> Remember me
+            </label>
+            <div class="grid-item">
+                <button type="submit">Login</button>
+            </div>
+        </div>
+        <div id="signup_link" class="grid-item">
+            <p>Don't have an account?
+                <span>
+                    <a id="signup_link" href="/register">Sign Up</a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
