@@ -14,6 +14,8 @@ const session = require("express-session");
 // Require flash. This allows flash error messages.
 const flash = require("connect-flash");
 
+const cookieParser = require("cookie-parser");
+
 /*
     Require passport. This package allows for authentication of users throughout the app through the use of
     various authentication strategies. This is further explained in /config/passport.js
@@ -29,10 +31,7 @@ const app = express();
 require("./config/db.js");
 
 // connect to passport configuration file, passing in passport package from above.
-// require('./config/passport')(passport);
-
-// import defined routes, passing in our passport strategy and our defined web-app.
-require("./app/routes.js")(app, passport);
+require("./config/passport")(passport);
 
 // set our templating engine to Handlebars (hbs).
 app.set("view engine", "hbs");
@@ -40,11 +39,26 @@ app.set("view engine", "hbs");
 // allow for express to parse the body object.
 app.use(express.urlencoded({ extended: false }));
 
+app.use(cookieParser());
+
+app.use(
+  session({
+    secret: "suchsecretwowe!",
+    resave: true,
+    saveUninitialized: true
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
 // set a new static path for serving static files. Namely, the public folder.
 app.use(express.static(path.join(__dirname, "public")));
 
 // enable flash message for login/register errors
 app.use(flash());
+
+// import defined routes, passing in our passport strategy and our defined web-app.
+require("./app/routes.js")(app, passport);
 
 // app startup. If PORT is not defined, use port 3000. Log the port out to the console.
 // Normally, the app is started as defined in the README (node app.js). But Heroku is weird about it...

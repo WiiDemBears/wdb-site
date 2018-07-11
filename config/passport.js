@@ -17,7 +17,7 @@ module.exports = function(passport) {
     new LocalStrategy(
       {
         usernameField: "username",
-        passworldField: "password",
+        passwordField: "password",
         passReqToCallback: true
       },
 
@@ -33,10 +33,10 @@ module.exports = function(passport) {
             else {
               const newUser = new User();
               newUser.local.username = username;
+              newUser.local.password = newUser.generateHash(password);
               newUser.local.email = req.body.email;
               newUser.local.firstname = req.body.firstname;
               newUser.local.lastname = req.body.lastname;
-              newUser.local.password = newUser.generateHash(password);
 
               newUser.save(function(err) {
                 if (err) throw err;
@@ -65,18 +65,14 @@ module.exports = function(passport) {
           // for deploy, change this to one large message. This should not tell the user whether the username or password is the incorrect key.
 
           if (!user)
-            return done(
-              null,
-              false,
-              req.flash("loginMessage", "Error with login. Wrong username.")
-            );
+            return done(null, false, {
+              message: "Error with login. Wrong password"
+            });
 
           if (!user.validPassword(password))
-            return done(
-              null,
-              false,
-              req.flash("loginMessage", "Error with login. Wrong password")
-            );
+            return done(null, false, {
+              message: "Error with login. Wrong password"
+            });
 
           return done(null, user);
         });
