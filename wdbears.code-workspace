@@ -10,5 +10,7 @@
       "path": "views"
     }
   ],
-  "settings": {}
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "wiidembears.github.io"
+  }
 }
