@@ -34,6 +34,15 @@
   transition: max-height 0.2s ease-out;
 }
 
+.dot {
+  height: 25px;
+  width: 25px;
+  background-image: url("/images/fortnite.jpg");
+  border-radius: 50%;
+  float: right;
+  margin-left: 5px;
+}
+
 @media only screen and (max-width: 800px) {
   .grid-container {
     display: grid;
