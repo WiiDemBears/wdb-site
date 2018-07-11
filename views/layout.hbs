@@ -29,51 +29,8 @@
         {{#if user}}
         <a id="login_button" href="/logout">Logout</a>
         <a id="user_info">Logged in as {{user.local.username}}</a>
-        {{else}}
-        <a id="login_button" onclick="document.getElementById('id01').style.display='block'">Login</a>
-        {{/if}}
+        {{else}} {{/if}}
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-    </div>
-
-    <!-- Login Form -->
-    <div id="id01" class="modal">
-        <div class="modal-content">
-            <form class="form-login" action="/login" method="POST">
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <h1 class="btn">Login</h1>
-                    </div>
-                    <label class="grid-item" for="uname">
-                        <b>Username</b>
-                    </label>
-                    <div class="grid-item">
-                        <input class="grid-item" type="text" placeholder="Bloshi" name="username" required>
-                    </div>
-                    <label class="grid-item" for="psw">
-                        <b>Password</b>
-                    </label>
-                    <div class="grid-item">
-                        <input class="grid-item" type="password" placeholder="Yuta123" name="password" required>
-                    </div>
-                    <div id="forgotpass" class="grid-item">
-                        <a href="/forgot-password">Forgot password?</a>
-                    </div>
-                    <label class="grid-item" id="checkbox">
-                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
-                    <div class="grid-item">
-                        <button type="submit">Login</button>
-                    </div>
-                </div>
-                <div id="signup_link" class="grid-item">
-                    <p>Don't have an account?
-                        <span>
-                            <a id="signup_link" href="/register">Sign Up</a>
-                        </span>
-                    </p>
-                </div>
-            </form>
-        </div>
     </div>
 
     {{#if error}}
