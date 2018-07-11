@@ -1,11 +1,14 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "public/styles"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "public/styles"
+    },
+    {
+      "path": "views"
+    }
+  ],
+  "settings": {}
 }
