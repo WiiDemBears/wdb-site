@@ -6,7 +6,7 @@
 const express = require("express");
 
 // Require mongoose, an Object Document Mapper that allows for seamless communication between Node.js and MongoDb
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 // Require express-session. This allows for user sessions.
 const session = require("express-session");

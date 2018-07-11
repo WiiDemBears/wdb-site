@@ -53,7 +53,7 @@ module.exports = function(app, passport) {
     "/register",
     passport.authenticate("local-register", {
       successRedirect: "/",
-      failureRedirect: "/",
+      failureRedirect: "/register",
       failureFlash: true
     })
   );
@@ -63,16 +63,10 @@ module.exports = function(app, passport) {
     res.redirect("/");
   });
 
-  /*
-        Middleware functions are called between requests... 
-    
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
     }
-
     res.redirect("/");
   }
-
-  */
 };
