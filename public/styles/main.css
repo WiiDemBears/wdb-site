@@ -44,7 +44,7 @@ body {
   text-align: center;
   margin-top: 10%;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .topnav a:not(:first-child) {
     display: none;
   }
