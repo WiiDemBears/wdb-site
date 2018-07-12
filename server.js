@@ -45,7 +45,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 /*
-  TODO : ADD SESSION STORE FOR PRODUCTION ENVIRONMENTS
+  TODO : MAKE DB CONFIG A MODULE
 */
 
 let dbconf;
