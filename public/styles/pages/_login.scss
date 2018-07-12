@@ -1,20 +1,20 @@
-.grid-container {
+.grid-container-login {
   display: grid;
   grid-template-columns: auto;
   padding: 8px;
 }
-.grid-item {
+.grid-item-login {
   text-align: center;
   padding: 5px;
 }
-.grid-container input {
+.grid-container-login input {
   text-align: left;
 }
-.grid-container label {
+.grid-container-login label {
   text-align: left;
   padding-left: 20px;
 }
-.grid-container #forgotpass {
+.grid-container-login #forgotpass {
   text-align: right;
   padding-right: 25px;
 }

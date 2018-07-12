@@ -1,35 +1,35 @@
 <div class="modal-content">
     <form class="form-login" action="/login" method="POST">
-        <div class="grid-container">
-            <div class="grid-item">
+        <div class="grid-container-login">
+            <div class="grid-item-login-login">
                 <h1 class="btn">Login</h1>
             </div>
             {{#if error}}
-            <div id="error_message" class="grid-item">{{error}}</div>
+            <div id="error_message" class="grid-item-login">{{error}}</div>
             {{/if}}
-            <label class="grid-item" for="uname">
+            <label class="grid-item-login" for="uname">
                 <b>Username</b>
             </label>
-            <div class="grid-item">
-                <input class="grid-item" type="text" placeholder="Bloshi" name="username" required>
+            <div class="grid-item-login">
+                <input class="grid-item-login" type="text" placeholder="Bloshi" name="username" required>
             </div>
-            <label class="grid-item" for="psw">
+            <label class="grid-item-login" for="psw">
                 <b>Password</b>
             </label>
-            <div class="grid-item">
-                <input class="grid-item" type="password" placeholder="Yuta123" name="password" required>
+            <div class="grid-item-login">
+                <input class="grid-item-login" type="password" placeholder="Yuta123" name="password" required>
             </div>
-            <div id="forgotpass" class="grid-item">
+            <div id="forgotpass" class="grid-item-login">
                 <a href="/forgot-password">Forgot password?</a>
             </div>
-            <label class="grid-item" id="checkbox">
+            <label class="grid-item-login" id="checkbox">
                 <input type="checkbox" name="remember"> Remember me
             </label>
-            <div class="grid-item">
+            <div class="grid-item-login">
                 <button type="submit">Login</button>
             </div>
         </div>
-        <div id="signup_link" class="grid-item">
+        <div id="signup_link" class="grid-item-login">
             <p>Don't have an account?
                 <span>
                     <a id="signup_link" href="/register">Sign Up</a>
