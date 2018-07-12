@@ -1,4 +1,232 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 400px 400px;
+  grid-auto-rows: 200px;
+  grid-gap: 20px;
+  justify-content: center; }
+
+.grid-item {
+  padding: 5px; }
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 8px;
+  margin-top: 20px; }
+
+.card:hover {
+  box-shadow: 0 18px 32px 0 rgba(0, 0, 0, 0.2); }
+
+.card_container {
+  padding: 2px 16px; }
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out; }
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-image: url("/images/fortnite.jpg");
+  border-radius: 50%;
+  float: right;
+  margin-left: 5px; }
+
+@media only screen and (max-width: 800px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-auto-rows: 135px;
+    grid-gap: 20px;
+    justify-content: center; } }
+@media only screen and (min-width: 750px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    grid-auto-rows: 200px;
+    grid-gap: 20px;
+    justify-content: center; } }
+.grid-container {
+  display: grid;
+  grid-template-columns: auto;
+  padding: 8px; }
+
+.grid-item {
+  text-align: center;
+  padding: 5px; }
+
+.grid-container input {
+  text-align: left; }
+
+.grid-container label {
+  text-align: left;
+  padding-left: 20px; }
+
+.grid-container #forgotpass {
+  text-align: right;
+  padding-right: 25px; }
+
+/* Input fields */
+input[type="text"],
+input[type="password"] {
+  width: 80%;
+  border: 0;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: inset 0 -1px #b3b3b3;
+  outline: white; }
+
+/* Set a style for all buttons */
+button {
+  background: linear-gradient(to right, #514a9d, #24c6dc);
+  padding: 14px 20px;
+  color: white;
+  margin: 4px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 50px; }
+
+button:hover {
+  opacity: 0.8; }
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  padding-top: 60px; }
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #ffffff;
+  margin: 2% auto 5% auto;
+  /* 5% from the top, 5% from the bottom and centered */
+  width: 400px;
+  /* Could be more or less, depending on screen size */
+  border-radius: 10px; }
+
+/* Add Zoom Animation 
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}*/
+@media only screen and (max-width: 600px) {
+  .modal-content {
+    width: 80%;
+    margin-top: 10%; }
+
+  button {
+    width: 50%; }
+
+  .grid-container #forgotpass {
+    padding-right: 15px; } }
+#signup_link {
+  padding: 0 0 10px 0; }
+
 body {
-  background-color: green; }
+  font-family: "Karla", sans-serif;
+  background: #24c6dc;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #514a9d, #24c6dc);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #514a9d, #24c6dc);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+
+#error_message {
+  color: red; }
+
+/* nav */
+.topnav {
+  overflow: hidden; }
+
+.topnav #login_button {
+  float: right;
+  cursor: pointer; }
+
+.topnav #user_info {
+  float: right;
+  cursor: default; }
+
+.topnav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px; }
+
+.topnav .icon {
+  display: none; }
+
+#body {
+  text-align: center;
+  margin-top: 10%; }
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {
+    display: none; }
+
+  .topnav a.icon {
+    float: right;
+    display: block; }
+
+  .topnav.responsive {
+    position: relative; }
+
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0; }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left; }
+
+  .topnav #login_button {
+    float: none; }
+
+  #yuta {
+    margin-top: 30%;
+    height: 200px;
+    width: auto; } }
 
 /*# sourceMappingURL=main.css.map */
