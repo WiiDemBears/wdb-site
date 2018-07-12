@@ -48,10 +48,20 @@ app.use(cookieParser());
   TODO : ADD SESSION STORE FOR PRODUCTION ENVIRONMENTS
 */
 
-const fn = path.join(__dirname, "/config/config.json");
-const data = fs.readFileSync(fn);
-const conf = JSON.parse(data);
-let dbconf = conf.dbconf;
+let dbconf;
+
+if (process.env.MONGODB_URI) {
+  dbconf = process.env.MONGODB_URI;
+} else {
+  const fs = require("fs");
+  const path = require("path");
+
+  const fn = path.join(__dirname, "/config/config.json");
+  const data = fs.readFileSync(fn);
+
+  const conf = JSON.parse(data);
+  dbconf = conf.dbconf;
+}
 
 app.use(
   session({
