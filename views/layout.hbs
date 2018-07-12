@@ -28,13 +28,22 @@
                 <a href="#" class="header__icon" id="header__icon"></a>
                 <a href="/" class="header__logo">WDB</a>
 
+                {{#if user}}
                 <nav class="menu">
                     <a href="/down">Down</a>
                     <a href="/quotes">Quotes</a>
                     <a href="/memes">Memes</a>
-
+                    <a id="user_info" href="/logout">Logout</a>
+                    <a id="user_info">Logged in as {{user.local.username}}</a>
                 </nav>
-
+                {{else}}
+                <nav class="menu">
+                    <a href="/down">Down</a>
+                    <a href="/quotes">Quotes</a>
+                    <a href="/memes">Memes</a>
+                    <a id="user_info" href="/login">Login</a>
+                </nav>
+                {{/if}}
             </header>
 
             <div class="site-content">

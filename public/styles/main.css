@@ -49,14 +49,14 @@ a {
   float: left;
 }
 /* MENU */
-.menu {
-  float: left;
-}
 .menu a {
   padding: 0 10px;
 }
 .menu a:hover {
   color: #c5cae9;
+}
+.menu #user_info {
+  float: right;
 }
 /* RESPONSIVE */
 @media only screen and (max-width: 765px) {
@@ -102,6 +102,9 @@ a {
     top: 16px;
     left: 15px;
     box-shadow: 0 10px 0 1px #fff, 0 16px 0 1px #fff, 0 22px 0 1px #fff;
+  }
+  .menu #user_info {
+    float: none;
   }
   .menu {
     position: absolute;
