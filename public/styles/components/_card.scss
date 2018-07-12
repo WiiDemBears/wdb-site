@@ -11,15 +11,14 @@
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: $box-shadow-color;
   background-color: white;
   transition: 0.3s;
   border-radius: 8px;
   margin-top: 20px;
-}
-
-.card:hover {
-  box-shadow: 0 18px 32px 0 rgba(0, 0, 0, 0.2);
+  &:hover {
+    box-shadow: $box-shadow-hover-color;
+  }
 }
 
 .card-container {
@@ -34,15 +33,18 @@
   transition: max-height 0.2s ease-out;
 }
 
-.pfp-dot {
-  height: 25px;
-  width: 25px;
-  background-image: url("/images/fortnite.jpg");
-  border-radius: 50%;
-  float: right;
-  margin-left: 5px;
+.pfp {
+  .dot {
+    height: 25px;
+    width: 25px;
+    background-image: url("/images/fortnite.jpg");
+    border-radius: 50%;
+    float: right;
+    margin-left: 5px;
+  }
 }
 
+//Media Queries
 @media only screen and (max-width: 800px) {
   .grid-container-card {
     display: grid;

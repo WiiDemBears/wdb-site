@@ -14,9 +14,8 @@
   transition: 0.3s;
   border-radius: 8px;
   margin-top: 20px; }
-
-.card:hover {
-  box-shadow: 0 18px 32px 0 rgba(0, 0, 0, 0.2); }
+  .card:hover {
+    box-shadow: 0 18px 32px 0 rgba(0, 0, 0, 0.2); }
 
 .card-container {
   padding: 2px 16px; }
@@ -28,7 +27,7 @@
   overflow: hidden;
   transition: max-height 0.2s ease-out; }
 
-.pfp-dot {
+.pfp .dot {
   height: 25px;
   width: 25px;
   background-image: url("/images/fortnite.jpg");
