@@ -19,13 +19,12 @@
   overflow: hidden;
   transition: max-height 0.2s ease-out; }
 
-.pfp .dot {
-  height: 25px;
-  width: 25px;
-  background-image: url("/images/fortnite.jpg");
-  border-radius: 50%;
-  float: right;
-  margin-left: 5px; }
+.attendance {
+  padding-bottom: 15px;
+  float: right; }
+  .attendance p {
+    font-weight: bold;
+    text-decoration: underline; }
 
 #body {
   text-align: center;
@@ -87,6 +86,11 @@
   display: grid;
   grid-template-columns: repeat(2, 50%);
   justify-items: center; }
+
+.upcoming-label {
+  padding: 1% 5% 5% 5%; }
+  .upcoming-label hr {
+    border-top: 1px solid white; }
 
 @media only screen and (max-width: 800px) {
   .grid-container-down {
