@@ -47,10 +47,17 @@ module.exports = function(app, passport) {
   app.post(
     "/login",
     passport.authenticate("local-login", {
-      successRedirect: "/",
       failureRedirect: "/login",
       failureFlash: true
-    })
+    }),
+    function(req, res) {
+      if (req.body.remember) {
+        req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000;
+      } else {
+        req.session.cookie.expires = false;
+      }
+      res.redirect("/");
+    }
   );
 
   app.post(

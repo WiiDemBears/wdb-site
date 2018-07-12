@@ -6,16 +6,19 @@
 const express = require("express");
 
 // Require mongoose, an Object Document Mapper that allows for seamless communication between Node.js and MongoDb
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 // Require express-session. This allows for user sessions.
 const session = require("express-session");
+
+const MongoStore = require("connect-mongo")(session);
 
 // Require flash. This allows flash error messages.
 const flash = require("connect-flash");
 
 const cookieParser = require("cookie-parser");
 
+const fs = require("fs");
 /*
     Require passport. This package allows for authentication of users throughout the app through the use of
     various authentication strategies. This is further explained in /config/passport.js
@@ -44,9 +47,16 @@ app.use(cookieParser());
 /*
   TODO : ADD SESSION STORE FOR PRODUCTION ENVIRONMENTS
 */
+
+const fn = path.join(__dirname, "/config/config.json");
+const data = fs.readFileSync(fn);
+const conf = JSON.parse(data);
+let dbconf = conf.dbconf;
+
 app.use(
   session({
     secret: "suchsecretwowe!",
+    store: new MongoStore({ url: dbconf, autoRemove: "native" }),
     resave: false,
     saveUninitialized: true
   })
