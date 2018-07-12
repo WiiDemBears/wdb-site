@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "public/styles"
+    },
+    {
+      "path": "views"
+    }
+  ],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "wiidembears.github.io"
+  }
+}
