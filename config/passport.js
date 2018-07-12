@@ -33,9 +33,14 @@ module.exports = function(passport) {
             function(err, user) {
               if (err) return done(err);
 
-              if (user)
+              if (user.local.email === req.body.email) {
                 return done(null, false, {
-                  message: "That username or email is already taken."
+                  message: "That email is already registered."
+                });
+              }
+              if (user.local.username === username)
+                return done(null, false, {
+                  message: "That username is already taken."
                 });
               else {
                 const newUser = new User();

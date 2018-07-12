@@ -11,11 +11,14 @@ const express = require("express");
 // Require express-session. This allows for user sessions.
 const session = require("express-session");
 
+const MongoStore = require("connect-mongo")(session);
+
 // Require flash. This allows flash error messages.
 const flash = require("connect-flash");
 
 const cookieParser = require("cookie-parser");
 
+const fs = require("fs");
 /*
     Require passport. This package allows for authentication of users throughout the app through the use of
     various authentication strategies. This is further explained in /config/passport.js
@@ -44,9 +47,26 @@ app.use(cookieParser());
 /*
   TODO : ADD SESSION STORE FOR PRODUCTION ENVIRONMENTS
 */
+
+let dbconf;
+
+if (process.env.MONGODB_URI) {
+  dbconf = process.env.MONGODB_URI;
+} else {
+  const fs = require("fs");
+  const path = require("path");
+
+  const fn = path.join(__dirname, "/config/config.json");
+  const data = fs.readFileSync(fn);
+
+  const conf = JSON.parse(data);
+  dbconf = conf.dbconf;
+}
+
 app.use(
   session({
     secret: "suchsecretwowe!",
+    store: new MongoStore({ url: dbconf, autoRemove: "native" }),
     resave: false,
     saveUninitialized: true
   })
