@@ -1,1 +1,15 @@
 // Down specific styles
+.grid-container-down {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  justify-items: center;
+}
+
+//Media Queries
+@media only screen and (max-width: 800px) {
+  .grid-container-down {
+    display: grid;
+    grid-template-columns: 100%;
+    justify-items: center;
+  }
+}
