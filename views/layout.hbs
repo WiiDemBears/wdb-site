@@ -27,10 +27,10 @@
         <a href="/quotes">Quotes</a>
         <a href="/memes">Memes</a>
         {{#if user}}
-        <a id="account_info" href="/logout">Logout</a>
-        <a id="account_info">Logged in as {{user.local.username}}</a>
+        <a id="login_button" href="/logout">Logout</a>
+        <!--<a id="account_info">Logged in as {{user.local.username}}</a>-->
         {{else}}
-        <a id="account_info" href="/login">Login</a>
+        <a id="login_button" href="/login">Login</a>
         {{/if}}
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
     </div>

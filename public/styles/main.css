@@ -46,7 +46,7 @@
 .topnav {
   overflow: hidden;
 }
-.topnav #account_info {
+.topnav #login_button {
   float: right;
   cursor: pointer;
 }
@@ -93,7 +93,7 @@
     text-align: left;
   }
 
-  .topnav #account_info {
+  .topnav #login_button {
     float: none;
   }
 
