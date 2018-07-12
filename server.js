@@ -18,7 +18,6 @@ const flash = require("connect-flash");
 
 const cookieParser = require("cookie-parser");
 
-const fs = require("fs");
 /*
     Require passport. This package allows for authentication of users throughout the app through the use of
     various authentication strategies. This is further explained in /config/passport.js
