@@ -9,8 +9,7 @@
     box-shadow: 0 18px 32px 0 rgba(0, 0, 0, 0.2); }
 
 .card-container {
-  margin: 20px;
-  padding-bottom: 20px; }
+  margin: 20px; }
 
 .card-panel {
   padding: 0 18px;
@@ -87,9 +86,9 @@
   grid-template-columns: repeat(2, 50%);
   justify-items: center; }
 
-.upcoming-label {
+.event-group-label {
   padding: 1% 5% 5% 5%; }
-  .upcoming-label hr {
+  .event-group-label hr {
     border-top: 1px solid white; }
 
 @media only screen and (max-width: 800px) {
