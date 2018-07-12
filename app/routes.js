@@ -17,11 +17,11 @@ module.exports = function(app, passport) {
     res.render("forgot-password");
   });
 
-  app.get("/memes", (req, res) => {
+  app.get("/memes", isLoggedIn, (req, res) => {
     res.render("memes");
   });
 
-  app.get("/quotes", (req, res) => {
+  app.get("/quotes", isLoggedIn, (req, res) => {
     Quote.find({}, function(err, quotes) {
       if (err) {
         console.log(err);
@@ -30,7 +30,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.get("/down", (req, res) => {
+  app.get("/down", isLoggedIn, (req, res) => {
     res.render("down");
   });
 
@@ -71,6 +71,6 @@ module.exports = function(app, passport) {
     if (req.isAuthenticated()) {
       return next();
     }
-    res.redirect("/");
+    res.redirect("/login");
   }
 };
