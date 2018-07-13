@@ -26,7 +26,7 @@ module.exports = function(passport) {
           User.findOne(
             {
               $or: [
-                { "local.username": username },
+                { "local.username_lower": username.toLowerCase() },
                 { "local.email": req.body.email }
               ]
             },
@@ -34,7 +34,7 @@ module.exports = function(passport) {
               if (err) return done(err);
 
               if (user) {
-                if (user.local.username === username) {
+                if (user.local.username_lower === username.toLowerCase()) {
                   return done(null, false, {
                     message: "That username is already taken."
                   });
@@ -45,6 +45,7 @@ module.exports = function(passport) {
               } else {
                 const newUser = new User();
                 newUser.local.username = username;
+                newUser.local.username_lower = username.toLowerCase();
                 newUser.local.password = newUser.generateHash(password);
                 newUser.local.email = req.body.email;
                 newUser.local.firstname = req.body.firstname;
