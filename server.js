@@ -19,8 +19,8 @@ const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
 
 /*
-    Require passport. This package allows for authentication of users throughout the app through the use of
-    various authentication strategies. This is further explained in /config/passport.js
+Require passport. This package allows for authentication of users throughout the app through the use of
+various authentication strategies. This is further explained in /config/passport.js
 */
 const passport = require("passport");
 
@@ -30,7 +30,7 @@ const path = require("path");
 const app = express();
 
 // require the database config file. (Add EncodeURI)
-require("./config/db.js");
+let dbconf = require("./config/db.js");
 
 // connect to passport configuration file, passing in passport package from above.
 require("./config/passport")(passport);
@@ -44,23 +44,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 /*
-  TODO : MAKE DB CONFIG A MODULE
+TODO : MAKE DB CONFIG A MODULE
 */
-
-let dbconf;
-
-if (process.env.MONGODB_URI) {
-  dbconf = process.env.MONGODB_URI;
-} else {
-  const fs = require("fs");
-  const path = require("path");
-
-  const fn = path.join(__dirname, "/config/config.json");
-  const data = fs.readFileSync(fn);
-
-  const conf = JSON.parse(data);
-  dbconf = conf.dbconf;
-}
 
 app.use(
   session({
@@ -84,5 +69,22 @@ require("./app/routes.js")(app, passport);
 
 // app startup. If PORT is not defined, use port 3000. Log the port out to the console.
 // Normally, the app is started as defined in the README (node app.js). But Heroku is weird about it...
-app.listen(process.env.PORT || 3000);
-console.log("This is the port: " + (process.env.PORT || 3000));
+
+if (process.env.NODE_ENV === "PRODUCTION") {
+  require("greenlock-express")
+    .create({
+      version: "draft-11",
+      server: "https://acme-v02.api.letsencrypt.org/directory",
+      configDir: "/config/acme/",
+      email: "lao294@nyu.edu",
+      approveDomains: ["wdbears.me", "wdbears.herokuapp.com"],
+      agreeTos: true,
+      app: app,
+      communityMember: true,
+      telemetry: true
+    })
+    .listen(80, 443);
+} else {
+  app.listen(process.env.PORT || 3000);
+  console.log("This is the port: " + (process.env.PORT || 3000));
+}

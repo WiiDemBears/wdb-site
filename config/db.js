@@ -16,3 +16,5 @@ if (process.env.MONGODB_URI) {
 }
 
 mongoose.connect(dbconf);
+
+module.exports = dbconf;
