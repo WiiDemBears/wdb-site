@@ -70,6 +70,7 @@ require("./app/routes.js")(app, passport);
 // app startup. If PORT is not defined, use port 3000. Log the port out to the console.
 // Normally, the app is started as defined in the README (node app.js). But Heroku is weird about it...
 
+/*
 if (process.env.NODE_ENV === "PRODUCTION") {
   require("greenlock-express")
     .create({
@@ -88,3 +89,7 @@ if (process.env.NODE_ENV === "PRODUCTION") {
   app.listen(process.env.PORT || 3000);
   console.log("This is the port: " + (process.env.PORT || 3000));
 }
+*/
+
+app.listen(process.env.PORT || 3000);
+console.log("This is the port: " + (process.env.PORT || 3000));
