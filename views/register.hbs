@@ -1,43 +1,39 @@
-<div class="account-form-content">
-    <form class="form-register" action="/register" method="POST">
-        <div class="grid-container-account-form">
-            <h1 class="grid-item-account-form">Register</h1>
-            {{#if error}}
-            <div id="error_message">{{error}}</div>
-            {{/if}}
-            <label class="grid-item-account-form" for="fname">
+<div class="grid-container-register">
+    <form class="form-container-register" action="/register" method="POST">
+        <h1>Register</h1>
+        {{#if error}}
+        <div id="error_message">{{error}}</div>
+        {{/if}}
+        <div class="register-grid-item">
+            <label for="fname">
                 <b>First Name</b>
             </label>
-            <div class="grid-item-account-form">
-                <input class="grid-item-account-form" type="text" placeholder="John" name="firstname" required>
-            </div>
-            <label class="grid-item-account-form" for="lname">
+        </div>
+        <input type="text" placeholder="John" name="firstname" required>
+        <div class="register-grid-item">
+            <label for="lname">
                 <b>Last Name</b>
             </label>
-            <div class="grid-item-account-form">
-                <input class="grid-item-account-form" type="text" placeholder="Doe" name="lastname" required>
-            </div>
-            <label class="grid-item-account-form" for="email">
+        </div>
+        <input type="text" placeholder="Doe" name="lastname" required>
+        <div class="register-grid-item">
+            <label for="email">
                 <b>Email</b>
             </label>
-            <div class="grid-item-account-form">
-                <input class="grid-item-account-form" type="text" placeholder="johndoe@gmail.com" name="email" required>
-            </div>
-            <label class="grid-item-account-form" for="uname">
+        </div>
+        <input type="text" placeholder="johndoe@gmail.com" name="email" required>
+        <div class="register-grid-item">
+            <label for="uname">
                 <b>Username</b>
             </label>
-            <div class="grid-item-account-form">
-                <input class="grid-item-account-form" type="text" placeholder="Bloshi" name="username" required>
-            </div>
-            <label class="grid-item-account-form" for="psw">
+        </div>
+        <input type="text" placeholder="Bloshi" name="username" required>
+        <div class="register-grid-item">
+            <label for="psw">
                 <b>Password</b>
             </label>
-            <div class="grid-item-account-form">
-                <input class="grid-item-account-form" type="password" placeholder="Yuta123" name="password" required>
-            </div>
-            <div class="grid-item-account-form">
-                <button class="submit-button" type="submit">Submit</button>
-            </div>
         </div>
+        <input type="password" placeholder="Yuta123" name="password" required>
+        <button class="submit-button" type="submit">Submit</button>
     </form>
 </div>

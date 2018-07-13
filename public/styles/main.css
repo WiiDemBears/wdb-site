@@ -155,43 +155,27 @@
     width: 90%;
   }
 }
-.account-form-content {
-  background-color: #ffffff;
-  margin: 2% auto 5% auto;
-  /* 5% from the top, 5% from the bottom and centered */
-  width: 400px;
-  /* Could be more or less, depending on screen size */
-  border-radius: 10px;
-}
-
-.grid-container-account-form {
+.grid-container-login {
   display: grid;
   grid-template-columns: auto;
-  padding: 8px;
 }
-.grid-container-account-form input {
-  text-align: left;
-}
-.grid-container-account-form label {
-  text-align: left;
-  padding-left: 20px;
-}
-.grid-container-account-form #forgotpass {
-  text-align: right;
-  padding-right: 25px;
-}
-.grid-container-account-form #checkbox {
-  margin: 12px 0 0px 0;
-}
-
-.grid-item-account-form {
+.grid-container-login .form-container-login {
+  background-color: #ffffff;
+  height: 80%;
+  padding: 5px 0 20px 0;
+  border-radius: 10px;
   text-align: center;
-  padding: 5px;
+  width: 375px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 400px;
 }
-
-/* Input fields */
-input[type=text],
-input[type=password] {
+.grid-container-login .form-container-login input[type=text],
+.grid-container-login .form-container-login input[type=password] {
   width: 80%;
   border: 0;
   padding: 10px 16px;
@@ -200,34 +184,78 @@ input[type=password] {
   box-shadow: inset 0 -1px #b3b3b3;
   outline: white;
 }
-
-#error_message {
+.grid-container-login .form-container-login #error_message {
   color: red;
+  text-align: center;
+}
+.grid-container-login .form-container-login #forgotpass {
+  text-align: right;
+  padding-right: 25px;
+  margin: 5px 0 0 0;
+}
+.grid-container-login .form-container-login .login-grid-item {
+  text-align: left;
+  padding: 10px 0 10px 15px;
 }
 
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
   .account-form-content {
     width: 80%;
     margin-top: 10%;
   }
-
-  .grid-container-account-form button {
-    width: 50%;
-    margin: 10px 0 0 0;
-  }
-  .grid-container-account-form #forgot-pass {
-    text-align: center;
-    padding: 10px 0 10px 0;
+  .grid-container-account-form {
+    button {
+      width: 50%;
+      margin: 10px 0 0 0;
+    }
+    #forgot-pass {
+      text-align: center;
+      padding: 10px 0 10px 0;
+    }
   }
 }
+*/
+.grid-container-register {
+  display: grid;
+  grid-template-columns: auto;
+}
+.grid-container-register .form-container-register {
+  background-color: #ffffff;
+  height: 80%;
+  padding: 5px 0 20px 0;
+  border-radius: 10px;
+  text-align: center;
+  width: 375px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 525px;
+}
+.grid-container-register .form-container-register input[type=text],
+.grid-container-register .form-container-register input[type=password] {
+  width: 80%;
+  border: 0;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: inset 0 -1px #b3b3b3;
+  outline: white;
+}
+.grid-container-register .form-container-register .register-grid-item {
+  text-align: left;
+  padding: 10px 0 10px 15px;
+}
+
 .grid-container-forgot-password {
   display: grid;
   grid-template-columns: 100%;
   justify-items: center;
   margin-top: 150px;
 }
-
-.forgot-password-form-container {
+.grid-container-forgot-password .forgot-password-form-container {
   text-align: center;
   background-color: #ffffff;
   margin: 2% auto 5% auto;
@@ -235,7 +263,7 @@ input[type=password] {
   padding: 3%;
   border-radius: 10px;
 }
-.forgot-password-form-container .forgot-password-grid-item {
+.grid-container-forgot-password .forgot-password-form-container .forgot-password-grid-item {
   text-align: left;
   margin-bottom: 10%;
 }

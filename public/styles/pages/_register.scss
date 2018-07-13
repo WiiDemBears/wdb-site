@@ -1,0 +1,19 @@
+.grid-container-register {
+  @include grid-layout;
+
+  .form-container-register {
+    @include form-layout;
+    @include center;
+    height: 525px;
+
+    input[type="text"],
+    input[type="password"] {
+      @include input-fields;
+    }
+
+    .register-grid-item {
+      text-align: left;
+      padding: 10px 0 10px 15px;
+    }
+  }
+}
