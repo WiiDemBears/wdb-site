@@ -13,6 +13,7 @@ const userSchema = new Schema({
     firstname: String,
     lastname: String,
     username: { type: String, unique: true },
+    username_lower: { type: String },
     email: { type: String, unique: true },
     password: String,
     friend_list: [Schema.Types.ObjectId]

@@ -52,7 +52,7 @@ app.use(
     secret: "suchsecretwowe!",
     store: new MongoStore({ url: dbconf, autoRemove: "native" }),
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false
   })
 );
 app.use(passport.initialize());
