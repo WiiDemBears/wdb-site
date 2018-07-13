@@ -20,21 +20,11 @@
     text-align: right;
     padding-right: 25px;
   }
-  /* Set a style for login/signup forms */
-  button {
-    background: linear-gradient(to right, #514a9d, #24c6dc);
-    padding: 14px 20px;
-    color: white;
-    margin: 4px 0;
-    border: none;
-    cursor: pointer;
-    width: 50%;
-    border-radius: 50px;
-    &:hover {
-      opacity: 0.8;
-    }
+  #checkbox {
+    margin: 12px 0 0px 0;
   }
 }
+
 .grid-item-account-form {
   text-align: center;
   padding: 5px;
@@ -63,12 +53,11 @@ input[type="password"] {
   .grid-container-account-form {
     button {
       width: 50%;
+      margin: 10px 0 0 0;
     }
-    #forgotpass {
-      padding-right: 15px;
-    }
-    #signup_link {
-      padding: 0 0 10px 0;
+    #forgot-pass {
+      text-align: center;
+      padding: 10px 0 10px 0;
     }
   }
 }

@@ -1,3 +1,17 @@
+.submit-button {
+  background: linear-gradient(to right, #514a9d, #24c6dc);
+  padding: 14px 20px;
+  color: white;
+  margin: 20px 0 0 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 50px;
+}
+.submit-button:hover {
+  opacity: 0.8;
+}
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
@@ -154,7 +168,6 @@
   display: grid;
   grid-template-columns: auto;
   padding: 8px;
-  /* Set a style for login/signup forms */
 }
 .grid-container-account-form input {
   text-align: left;
@@ -167,18 +180,8 @@
   text-align: right;
   padding-right: 25px;
 }
-.grid-container-account-form button {
-  background: linear-gradient(to right, #514a9d, #24c6dc);
-  padding: 14px 20px;
-  color: white;
-  margin: 4px 0;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  border-radius: 50px;
-}
-.grid-container-account-form button:hover {
-  opacity: 0.8;
+.grid-container-account-form #checkbox {
+  margin: 12px 0 0px 0;
 }
 
 .grid-item-account-form {
@@ -187,8 +190,8 @@
 }
 
 /* Input fields */
-input[type="text"],
-input[type="password"] {
+input[type=text],
+input[type=password] {
   width: 80%;
   border: 0;
   padding: 10px 16px;
@@ -210,14 +213,33 @@ input[type="password"] {
 
   .grid-container-account-form button {
     width: 50%;
+    margin: 10px 0 0 0;
   }
-  .grid-container-account-form #forgotpass {
-    padding-right: 15px;
-  }
-  .grid-container-account-form #signup_link {
-    padding: 0 0 10px 0;
+  .grid-container-account-form #forgot-pass {
+    text-align: center;
+    padding: 10px 0 10px 0;
   }
 }
+.grid-container-forgot-password {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-items: center;
+  margin-top: 150px;
+}
+
+.forgot-password-form-container {
+  text-align: center;
+  background-color: #ffffff;
+  margin: 2% auto 5% auto;
+  /* 5% from the top, 5% from the bottom and centered */
+  padding: 3%;
+  border-radius: 10px;
+}
+.forgot-password-form-container .forgot-password-grid-item {
+  text-align: left;
+  margin-bottom: 10%;
+}
+
 body {
   font-family: "Karla", sans-serif;
   background: #24c6dc;
