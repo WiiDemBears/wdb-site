@@ -1,11 +1,9 @@
 //Centers item directly in middle of page
 @mixin center {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  position: relative;
+  left: 50%;
+  margin-top: 50px;
+  transform: translateX(-50%);
 }
 
 //Grid container
@@ -22,6 +20,9 @@
   border-radius: 10px;
   text-align: center;
   width: 375px;
+  @media only screen and (max-width: 800px) {
+    width: 300px;
+  }
 }
 
 //Input fields
