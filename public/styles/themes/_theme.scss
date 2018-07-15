@@ -1,7 +1,9 @@
 //Default theme
-body {
+body,
+html {
   font-family: "Karla", sans-serif;
-
+  height: 100%;
+  overflow: hidden;
   background: $primary-color; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     $gradient
