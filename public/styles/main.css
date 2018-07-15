@@ -136,9 +136,9 @@
     margin-top: 50px;
     transform: translateX(-50%);
     height: 400px; }
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 750px) {
       .grid-container-login .form-container-login {
-        width: 300px; } }
+        width: 90%; } }
     .grid-container-login .form-container-login input[type="text"],
     .grid-container-login .form-container-login input[type="password"] {
       width: 80%;
@@ -174,9 +174,9 @@
     margin-top: 50px;
     transform: translateX(-50%);
     height: 525px; }
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 750px) {
       .grid-container-register .form-container-register {
-        width: 300px; } }
+        width: 90%; } }
     .grid-container-register .form-container-register input[type="text"],
     .grid-container-register .form-container-register input[type="password"] {
       width: 80%;
