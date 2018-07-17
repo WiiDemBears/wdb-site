@@ -33,7 +33,7 @@
                 <b>Password</b>
             </label>
         </div>
-        <input type="password" placeholder="Yuta123" name="password" required>
+        <input type="password" placeholder="Yuta123" name="password" pattern=".{8,}" required oninvalid="this.setCustomValidity('Password must be at least 8 characters.')">
         <button class="submit-button" type="submit">Submit</button>
     </form>
 </div>
