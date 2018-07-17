@@ -8,6 +8,8 @@ const URLSlugs = require("mongoose-url-slugs");
 
 const Schema = mongoose.Schema;
 
+// USE POPULATE IN THE MONGO SHELL TO POPULATE ENTRIES WITH FRIENDS INSTEAD OF THE IDS.
+
 const userSchema = new Schema({
   local: {
     firstname: String,
@@ -16,7 +18,7 @@ const userSchema = new Schema({
     username_lower: { type: String },
     email: { type: String, unique: true },
     password: String,
-    friend_list: [Schema.Types.ObjectId]
+    friends: [{ type: Schema.Types.ObjectId, ref: "User" }]
   }
 });
 
