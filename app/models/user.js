@@ -18,7 +18,9 @@ const userSchema = new Schema({
     username_lower: { type: String },
     email: { type: String, unique: true },
     password: String,
-    friends: [{ type: Schema.Types.ObjectId, ref: "User" }]
+    friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
   }
 });
 

@@ -1,6 +1,9 @@
 // const mongoose = require("mongoose");
-// const User = require("../app/models/user");
+const User = require("../app/models/user");
 const Quote = require("../app/models/quote");
+const async = require("async");
+const crypto = require("crypto");
+const nodemailer = require("nodemailer");
 
 module.exports = function(app, passport) {
   app.use((req, res, next) => {
@@ -14,7 +17,69 @@ module.exports = function(app, passport) {
   });
 
   app.get("/forgot-password", (req, res) => {
-    res.render("forgot-password");
+    res.render("forgot-password", { user: req.user });
+  });
+
+  app.post("/forgot-password", (req, res, next) => {
+    async.waterfall(
+      [
+        function(done) {
+          crypto.randomBytes(20, function(err, buffer) {
+            let token = buffer.toString("hex");
+            done(err, token);
+          });
+        },
+        function(token, done) {
+          User.findOne({ "local.email": req.body.email }, function(err, user) {
+            if (err) return err;
+            if (!user) {
+              return done(null, false, {
+                message: "No account with that email address exists."
+              });
+            }
+
+            user.resetPasswordToken = token;
+            user.resetPasswordExpires = Date.now() + 3600000;
+
+            user.save(function(err) {
+              done(err, token, user);
+            });
+          });
+        },
+        function(token, user, done) {
+          const smtpTransport = nodemailer.createTransport("SMTP", {
+            service: "SendGrid",
+            auth: {
+              user: process.env.SGRID_USERNAME,
+              pass: process.env.SGRID_PASSWORD
+            }
+          });
+          const mailOptions = {
+            to: user.local.email,
+            from: "passwordreset@wdbears.com",
+            subject: "Password Reset Email - DO NOT REPLY",
+            text:
+              "You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n" +
+              "Please click on the following link, or paste this into your browser to complete the process:\n\n" +
+              "http://" +
+              req.headers.host +
+              "/reset/" +
+              token +
+              "\n\n" +
+              "If you did not request this, please ignore this email and your password will remain unchanged.\n"
+          };
+          smtpTransport.sendMail(mailOptions, function(err) {
+            done(err, "done", {
+              message: "An email has been sent to your account's email address"
+            });
+          });
+        }
+      ],
+      function(err) {
+        if (err) return next(err);
+        res.redirect("/forgot-password");
+      }
+    );
   });
 
   app.get("/memes", isLoggedIn, (req, res) => {
