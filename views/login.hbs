@@ -1,34 +1,71 @@
-<div class="grid-container-login">
-    <form class="form-container-login" action="/login" method="POST">
+<div class="container-fluid h-100">
+    <div class="d-flex align-items-center justify-content-center h-100">
+        <div class="d-flex flex-column card " style="width: 23.5em; ">
+            <div class="card-body">
+                <form action="/login" method="POST">
+                    <h1 class="text-center">Login</h1>
+                    {{#if error}}
+                    <div id="error_message" class="login-grid-item">{{error}}</div>
+                    {{/if}}
+                    <label for="uname">
+                        <b>Username</b>
+                    </label>
+                    <input type="text" class="form-control" placeholder="Bloshi" name="username" required>
+                    <label for="psw">
+                        <b>Password</b>
+                    </label>
+                    <input type="password" class="form-control" placeholder="Yuta123" name="password" required>
+                    <div class="text-right" id="forgotpass">
+                        <a href="/forgot-password">Forgot password?</a>
+                    </div>
+                    <input type="checkbox" name="remember "> Keep me logged in
+                    <div class="text-center">
+                        <button class="submit-button " type="submit ">Login</button>
+                    </div>
+                    <div class="text-center">
+                        <p>
+                            Don't have an account?
+                            <span>
+                                <a id="signup_link " href="/register ">Sign Up</a>
+                            </span>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="grid-container-login ">
+    <form class="form-container-login " action="/login " method="POST ">
         <h1>Login</h1>
         {{#if error}}
-        <div id="error_message" class="login-grid-item">{{error}}</div>
+        <div id="error_message " class="login-grid-item ">{{error}}</div>
         {{/if}}
-        <div class="login-grid-item">
-            <label for="uname">
+        <div class="login-grid-item ">
+            <label for="uname ">
                 <b>Username</b>
             </label>
         </div>
 
-        <input type="text" placeholder="Bloshi" name="username" required>
-        <div class="login-grid-item">
-            <label for="psw">
+        <input type="text " placeholder="Bloshi " name="username " required>
+        <div class="login-grid-item ">
+            <label for="psw ">
                 <b>Password</b>
             </label>
         </div>
-        <input type="password" placeholder="Yuta123" name="password" required>
-        <div id="forgotpass">
-            <a href="/forgot-password">Forgot password?</a>
+        <input type="password " placeholder="Yuta123 " name="password " required>
+        <div id="forgotpass ">
+            <a href="/forgot-password ">Forgot password?</a>
         </div>
-        <div class="login-grid-item">
-            <input type="checkbox" name="remember "> Keep me logged in
+        <div class="login-grid-item ">
+            <input type="checkbox " name="remember "> Keep me logged in
         </div>
-        <button class="submit-button" type="submit">Login</button>
+        <button class="submit-button " type="submit ">Login</button>
         <p>
             Don't have an account?
             <span>
-                <a id="signup_link" href="/register">Sign Up</a>
+                <a id="signup_link " href="/register ">Sign Up</a>
             </span>
         </p>
     </form>
-</div>
+</div>-->
