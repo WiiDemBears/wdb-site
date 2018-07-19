@@ -8,6 +8,9 @@
     },
     {
       "path": "views"
+    },
+    {
+      "path": "public/scripts"
     }
   ],
   "settings": {
