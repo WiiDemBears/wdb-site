@@ -38,8 +38,8 @@ module.exports = function(app, passport) {
               });
             }
 
-            user.resetPasswordToken = token;
-            user.resetPasswordExpires = Date.now() + 3600000;
+            user.local.resetPasswordToken = token;
+            user.local.resetPasswordExpires = Date.now() + 3600000;
 
             user.save(function(err) {
               done(err, token, user);
@@ -82,6 +82,54 @@ module.exports = function(app, passport) {
         res.redirect("/forgot-password");
       }
     );
+  });
+
+  app.get("/reset:token", (req, res) => {
+    User.findOne(
+      {
+        resetPasswordToken: req.params.token,
+        resetPasswordExpires: { $gt: Date.now() }
+      },
+      function(err, user) {
+        if (err) console.log(err);
+        if (!user) {
+          req.flash(
+            "flashMessage",
+            "Password reset token has expired, or is invalid."
+          );
+          return res.redirect("/forgot-password");
+        }
+        res.render("reset", {
+          user: req.user
+        });
+      }
+    );
+  });
+
+  app.post("/reset:token", (req, res) => {
+    async.waterfall([
+      function(done) {
+        User.findOne(
+          {
+            resetPasswordToken: req.params.token,
+            resetPasswordExpires: { $gt: Date.now() }
+          },
+          function(err, user) {
+            if (err) console.log(err);
+
+            if (!user) {
+              req.flash(
+                "flashMessage",
+                "Password reset token has expired, or is invalid."
+              );
+              return res.redirect("back");
+            }
+
+            user.local.password = req.body.password;
+          }
+        );
+      }
+    ]);
   });
 
   app.get("/memes", isLoggedIn, (req, res) => {
