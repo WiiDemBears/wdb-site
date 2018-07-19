@@ -1,3 +1,4 @@
+/*
 // Signup Form
 // Get the modal
 var modal = document.getElementById("id01");
@@ -16,4 +17,4 @@ function myFunction() {
   } else {
     x.className = "topnav";
   }
-}
+}*/
