@@ -1,3 +1,12 @@
-#yuta_container {
-  @include grid-layout;
+#yuta {
+  @include center;
+  width: 50%;
+  //Media Queries
+  /*
+  @include bp(md) {
+    width: 25%;
+  }
+  @include bp(sm) {
+    width: 60%;
+  }*/
 }

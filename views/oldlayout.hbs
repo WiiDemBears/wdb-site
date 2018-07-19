@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e2327">
+
+    <!--Google Fonts, Ionicons, Animate.css, Local stylesheet, FA Icons -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.2.0/dist/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+
+    <!--Favicon-->
+    <link rel="icon" href="/images/favicon.ico">
+    <title>Wii Dem Bears</title>
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="/" class="active">Wii Dem Bears</a>
+        <a href="/down">Down</a>
+        <a href="/quotes">Quotes</a>
+        <a href="/memes">Memes</a>
+        {{#if user}}
+        <a id="login_button" href="/logout">Logout</a>
+        <!--<a id="account_info">Logged in as {{user.local.username}}</a>-->
+        {{else}}
+        <a id="login_button" href="/login">Login</a>
+        {{/if}}
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+
+    <!--Handlebars Body-->
+    {{{body}}}
+
+    <!--Local JS File-->
+    <script src="/scripts/main.js "></script>
+</body>
+
+</html>
