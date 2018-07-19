@@ -4,17 +4,19 @@
             <div class="card-body">
                 <form action="/login" method="POST">
                     <h1 class="text-center">Login</h1>
-                    {{#if error}}
-                    <div id="error_message" class="login-grid-item">{{error}}</div>
+                    {{#if flashMessage}}
+                    <div id="error_message" class="login-grid-item">{{flashMessage}}</div>
                     {{/if}}
                     <label for="uname">
                         <b>Username</b>
                     </label>
-                    <input type="text" class="form-control" placeholder="Bloshi" name="username" required>
+                    <input type="text" class="form-control" placeholder="Bloshi" name="username" style="border:0;box-shadow: inset 0 -1px #b3b3b3;"
+                        required>
                     <label for="psw">
                         <b>Password</b>
                     </label>
-                    <input type="password" class="form-control" placeholder="Yuta123" name="password" required>
+                    <input type="password" class="form-control" placeholder="Yuta123" name="password" style="border:0; box-shadow: inset 0 -1px #b3b3b3;"
+                        required>
                     <div class="text-right" id="forgotpass">
                         <a href="/forgot-password">Forgot password?</a>
                     </div>
@@ -22,13 +24,11 @@
                     <div class="text-center">
                         <button class="submit-button " type="submit ">Login</button>
                     </div>
-                    <div class="text-center">
-                        <p>
-                            Don't have an account?
-                            <span>
-                                <a id="signup_link " href="/register ">Sign Up</a>
-                            </span>
-                        </p>
+                    <div class="text-center" style="margin-top:10px;">
+                        Don't have an account?
+                        <span>
+                            <a id="signup_link " href="/register ">Sign Up</a>
+                        </span>
                     </div>
                 </form>
             </div>
