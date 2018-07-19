@@ -1,8 +1,8 @@
 <div class="grid-container-login">
     <form class="form-container-login" action="/login" method="POST">
         <h1>Login</h1>
-        {{#if error}}
-        <div id="error_message" class="login-grid-item">{{error}}</div>
+        {{#if flashMessage}}
+        <div id="error_message" class="login-grid-item">{{flashMessage}}</div>
         {{/if}}
         <div class="login-grid-item">
             <label for="uname">

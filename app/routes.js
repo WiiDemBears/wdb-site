@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 module.exports = function(app, passport) {
   app.use((req, res, next) => {
     res.locals.user = req.user;
-    res.locals.error = req.flash("error");
+    res.locals.flashMessage = req.flash("flashMessage");
     next();
   });
 
@@ -47,11 +47,11 @@ module.exports = function(app, passport) {
           });
         },
         function(token, user, done) {
-          const smtpTransport = nodemailer.createTransport("SMTP", {
+          const smtpTransport = nodemailer.createTransport({
             service: "SendGrid",
             auth: {
-              user: process.env.SGRID_USERNAME,
-              pass: process.env.SGRID_PASSWORD
+              user: process.env.MAIL_USER,
+              pass: process.env.MAIL_PASS
             }
           });
           const mailOptions = {
@@ -69,9 +69,11 @@ module.exports = function(app, passport) {
               "If you did not request this, please ignore this email and your password will remain unchanged.\n"
           };
           smtpTransport.sendMail(mailOptions, function(err) {
-            done(err, "done", {
-              message: "An email has been sent to your account's email address"
-            });
+            req.flash(
+              "flashMessage",
+              "An email has been sent to your account's email address"
+            );
+            done(err, "done");
           });
         }
       ],

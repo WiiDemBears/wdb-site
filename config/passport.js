@@ -35,13 +35,17 @@ module.exports = function(passport) {
 
               if (user) {
                 if (user.local.username_lower === username.toLowerCase()) {
-                  return done(null, false, {
-                    message: "That username is already taken."
-                  });
+                  return done(
+                    null,
+                    false,
+                    req.flash("flashMessage", "That username is already taken.")
+                  );
                 }
-                return done(null, false, {
-                  message: "That email is already registered."
-                });
+                return done(
+                  null,
+                  false,
+                  req.flash("flashMessage", "That email is already registered.")
+                );
               } else {
                 const newUser = new User();
                 newUser.local.username = username;
@@ -79,14 +83,24 @@ module.exports = function(passport) {
           // for deploy, change this to one large message. This should not tell the user whether the username or password is the incorrect key.
 
           if (!user)
-            return done(null, false, {
-              message: "Error with login. Username doesn't exist."
-            });
+            return done(
+              null,
+              false,
+              req.flash(
+                "flashMessage",
+                "Error with login. Username doesn't exist"
+              )
+            );
 
           if (!user.validPassword(password))
-            return done(null, false, {
-              message: "Error with login. Wrong password."
-            });
+            return done(
+              null,
+              false,
+              req.flash(
+                "flashMessage",
+                "Error with login. Username doesn't exist"
+              )
+            );
 
           return done(null, user);
         });
