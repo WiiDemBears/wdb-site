@@ -88,7 +88,7 @@ module.exports = function(passport) {
               false,
               req.flash(
                 "flashMessage",
-                "Error with login. Username doesn't exist"
+                "Error. Wrong username or password."
               )
             );
 
@@ -98,7 +98,7 @@ module.exports = function(passport) {
               false,
               req.flash(
                 "flashMessage",
-                "Error with login. Username doesn't exist"
+                "Error. Wrong username or password."
               )
             );
 
