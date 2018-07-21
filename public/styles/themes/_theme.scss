@@ -1,6 +1,13 @@
 //Default theme
 body,
 html {
-  font-family: $main-font;
-  @include background;
+  font-family: "Karla", sans-serif;
+  height: 95%;
+  background: $primary-color; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    $gradient
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    $gradient
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

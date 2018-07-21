@@ -1,0 +1,6 @@
+//Default theme
+body,
+html {
+  font-family: $main-font;
+  @include background;
+}

@@ -1,0 +1,14 @@
+//Submit button (used for login, register and password reset)
+.submit-button {
+  background: $gradient-backwards;
+  padding: 14px 20px;
+  color: white;
+  margin: 20px 0 0 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 50px;
+  &:hover {
+    opacity: 0.8;
+  }
+}
