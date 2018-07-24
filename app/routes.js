@@ -20,6 +20,10 @@ module.exports = function(app, passport) {
     res.render("forgot-password", { user: req.user });
   });
 
+  app.get("/reset", (req, res) =>{
+    res.rednder("reset");
+  })
+
   app.post("/forgot-password", (req, res, next) => {
     async.waterfall(
       [

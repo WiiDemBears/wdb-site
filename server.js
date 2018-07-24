@@ -78,12 +78,12 @@ require("./app/routes.js")(app, passport);
 
 app.use((req, res) =>{
   res.status(404);
-  res.render("404", {title: "404: Error, File not Found", layout: false});
+  res.render("error/404", {title: "404: Error, File not Found", layout: false});
 });
 
 app.use(function(error, req, res, next){
   res.status(500);
-  res.render("500", {title: "500: Internal Server Error", error: error, layout: false});
+  res.render("error/500", {title: "500: Internal Server Error", error: error, layout: false});
 });
 
 // app startup. If PORT is not defined, use port 3000. Log the port out to the console.
