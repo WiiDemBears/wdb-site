@@ -13,15 +13,15 @@ module.exports = function(app, passport) {
   });
 
   app.get("/profile",  (req, res) => {
-    res.render("profile");
+    res.render("authentication/profile");
   });
 
   app.get("/forgot-password", (req, res) => {
-    res.render("forgot-password", { user: req.user });
+    res.render("authentication/forgot-password", { user: req.user });
   });
 
   app.get("/reset", (req, res) =>{
-    res.rednder("reset");
+    res.rednder("authentication/reset");
   })
 
   app.post("/forgot-password", (req, res, next) => {
@@ -103,7 +103,7 @@ module.exports = function(app, passport) {
           );
           return res.redirect("/forgot-password");
         }
-        res.render("reset", {
+        res.render("authentication/reset", {
           user: req.user
         });
       }
@@ -189,12 +189,12 @@ module.exports = function(app, passport) {
   // Talk with group about the login and register forms i.e. where they will be GET requesting to
 
   app.get("/login", (req, res) => {
-    res.render("login");
+    res.render("authentication/login");
   });
 
 
   app.get("/register", (req, res) => {
-    res.render("register");
+    res.render("authentication/register");
   });
 
   app.post(
