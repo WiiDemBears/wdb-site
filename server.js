@@ -65,6 +65,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
 
 // import defined routes, passing in our passport strategy and our defined web-app.
+  
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.flashMessage = req.flash("flashMessage");
+  next();
+});
+
 require("./app/routes.js")(app, passport);
 
 // app startup. If PORT is not defined, use port 3000. Log the port out to the console.

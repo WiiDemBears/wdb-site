@@ -6,11 +6,7 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
 module.exports = function(app, passport) {
-  app.use((req, res, next) => {
-    res.locals.user = req.user;
-    res.locals.flashMessage = req.flash("flashMessage");
-    next();
-  });
+
 
   app.get("/", (req, res) => {
     res.render("index");
@@ -50,8 +46,8 @@ module.exports = function(app, passport) {
           const smtpTransport = nodemailer.createTransport({
             service: "SendGrid",
             auth: {
-              user: process.env.MAIL_USER,
-              pass: process.env.MAIL_PASS
+              user: "luistics",
+              pass: "test"
             }
           });
           const mailOptions = {
@@ -73,7 +69,7 @@ module.exports = function(app, passport) {
               "flashMessage",
               "An email has been sent to your account's email address"
             );
-            done(err, "done");
+            done(err);
           });
         }
       ],
@@ -126,10 +122,43 @@ module.exports = function(app, passport) {
             }
 
             user.local.password = req.body.password;
+            user.local.resetPasswordToken = undefined;
+            user.local.resetPasswordExpires = undefined;
+
+            user.save(function(err){
+              req.logIn(user, function(err){
+                done(err, user);
+              });
+            });
           }
         );
+      },
+      function(user, done){
+        let smtpTransport = nodemailer.createTransport({
+          service: "SendGrid",
+          auth:{
+            user: "luistics",
+            pass: "test"
+          }
+        });
+        let mailOptions = {
+          to: user.local.email,
+          from: "passwordreset@wdbears.com",
+          subject: "Your password has been changed.",
+          text: 'Hello,\n\n' +
+          'The password for your account at wdbears.me through ' + user.email + ' has just been changed.\n'
+        };
+        smtpTransport.sendMail(mailOptions, function(err) {
+          req.flash(
+            "flashMessage",
+            "Your password has been changed."
+          );
+          done(err);
+        });
       }
-    ]);
+    ], function(err){
+      res.redirect('/');
+    });
   });
 
   app.get("/memes", isLoggedIn, (req, res) => {
@@ -154,6 +183,7 @@ module.exports = function(app, passport) {
   app.get("/login", (req, res) => {
     res.render("login");
   });
+
 
   app.get("/register", (req, res) => {
     res.render("register");
