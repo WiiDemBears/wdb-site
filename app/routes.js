@@ -7,13 +7,14 @@ const nodemailer = require("nodemailer");
 
 module.exports = function(app, passport) {
 
+  /* GET ROUTES */
 
   app.get("/", (req, res) => {
     res.render("index");
   });
 
   app.get("/profile",  (req, res) => {
-    res.render("authentication/profile");
+    res.render("pages/profile");
   });
 
   app.get("/forgot-password", (req, res) => {
@@ -22,7 +23,61 @@ module.exports = function(app, passport) {
 
   app.get("/reset", (req, res) =>{
     res.rednder("authentication/reset");
-  })
+  });
+  
+  app.get("/memes", isLoggedIn, (req, res) => {
+    res.render("pages/memes");
+  });
+  
+  app.get("/quotes", isLoggedIn, (req, res) => {
+    Quote.find({}, function(err, quotes) {
+      if (err) {
+        console.log(err);
+      }
+      res.render("pages/quotes", { allQuotes: quotes });
+    });
+  });
+
+  app.get("/down", isLoggedIn, (req, res) => {
+    res.render("pages/down");
+  });
+
+  app.get("/logout", function(req, res) {
+    req.logOut();
+    res.redirect("/");
+  });
+
+  app.get("/login", (req, res) => {
+    res.render("authentication/login");
+  });
+
+  app.get("/register", (req, res) => {
+    res.render("authentication/register");
+  });
+
+  app.get("/reset:token", (req, res) => {
+    User.findOne(
+      {
+        resetPasswordToken: req.params.token,
+        resetPasswordExpires: { $gt: Date.now() }
+      },
+      function(err, user) {
+        if (err) console.log(err);
+        if (!user) {
+          req.flash(
+            "flashMessage",
+            "Password reset token has expired, or is invalid."
+          );
+          return res.redirect("/forgot-password");
+        }
+        res.render("authentication/reset", {
+          user: req.user
+        });
+      }
+    );
+  });
+
+  /* POST ROUTES */
 
   app.post("/forgot-password", (req, res, next) => {
     async.waterfall(
@@ -88,28 +143,6 @@ module.exports = function(app, passport) {
     );
   });
 
-  app.get("/reset:token", (req, res) => {
-    User.findOne(
-      {
-        resetPasswordToken: req.params.token,
-        resetPasswordExpires: { $gt: Date.now() }
-      },
-      function(err, user) {
-        if (err) console.log(err);
-        if (!user) {
-          req.flash(
-            "flashMessage",
-            "Password reset token has expired, or is invalid."
-          );
-          return res.redirect("/forgot-password");
-        }
-        res.render("authentication/reset", {
-          user: req.user
-        });
-      }
-    );
-  });
-
   app.post("/reset:token", (req, res) => {
     async.waterfall([
       function(done) {
@@ -169,34 +202,6 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.get("/memes", isLoggedIn, (req, res) => {
-    res.render("memes");
-  });
-
-  app.get("/quotes", isLoggedIn, (req, res) => {
-    Quote.find({}, function(err, quotes) {
-      if (err) {
-        console.log(err);
-      }
-      res.render("quotes", { allQuotes: quotes });
-    });
-  });
-
-  app.get("/down", isLoggedIn, (req, res) => {
-    res.render("down");
-  });
-
-  // Talk with group about the login and register forms i.e. where they will be GET requesting to
-
-  app.get("/login", (req, res) => {
-    res.render("authentication/login");
-  });
-
-
-  app.get("/register", (req, res) => {
-    res.render("authentication/register");
-  });
-
   app.post(
     "/login",
     passport.authenticate("local-login", {
@@ -222,10 +227,6 @@ module.exports = function(app, passport) {
     })
   );
 
-  app.get("/logout", function(req, res) {
-    req.logOut();
-    res.redirect("/");
-  });
 
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
