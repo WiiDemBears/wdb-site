@@ -12,6 +12,10 @@ module.exports = function(app, passport) {
     res.render("index");
   });
 
+  app.get("/profile",  (req, res) => {
+    res.render("profile");
+  });
+
   app.get("/forgot-password", (req, res) => {
     res.render("forgot-password", { user: req.user });
   });
