@@ -6,19 +6,78 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
 module.exports = function(app, passport) {
-  app.use((req, res, next) => {
-    res.locals.user = req.user;
-    res.locals.flashMessage = req.flash("flashMessage");
-    next();
-  });
+
+  /* GET ROUTES */
 
   app.get("/", (req, res) => {
     res.render("index");
   });
 
-  app.get("/forgot-password", (req, res) => {
-    res.render("forgot-password", { user: req.user });
+  app.get("/profile",  (req, res) => {
+    res.render("pages/profile");
   });
+
+  app.get("/forgot-password", (req, res) => {
+    res.render("authentication/forgot-password", { user: req.user });
+  });
+
+  app.get("/reset", (req, res) =>{
+    res.rednder("authentication/reset");
+  });
+  
+  app.get("/memes", isLoggedIn, (req, res) => {
+    res.render("pages/memes");
+  });
+  
+  app.get("/quotes", isLoggedIn, (req, res) => {
+    Quote.find({}, function(err, quotes) {
+      if (err) {
+        console.log(err);
+      }
+      res.render("pages/quotes", { allQuotes: quotes });
+    });
+  });
+
+  app.get("/down", isLoggedIn, (req, res) => {
+    res.render("pages/down");
+  });
+
+  app.get("/logout", function(req, res) {
+    req.logOut();
+    res.redirect("/");
+  });
+
+  app.get("/login", (req, res) => {
+    res.render("authentication/login");
+  });
+
+  app.get("/register", (req, res) => {
+    res.render("authentication/register");
+  });
+
+  app.get("/reset:token", (req, res) => {
+    User.findOne(
+      {
+        resetPasswordToken: req.params.token,
+        resetPasswordExpires: { $gt: Date.now() }
+      },
+      function(err, user) {
+        if (err) console.log(err);
+        if (!user) {
+          req.flash(
+            "flashMessage",
+            "Password reset token has expired, or is invalid."
+          );
+          return res.redirect("/forgot-password");
+        }
+        res.render("authentication/reset", {
+          user: req.user
+        });
+      }
+    );
+  });
+
+  /* POST ROUTES */
 
   app.post("/forgot-password", (req, res, next) => {
     async.waterfall(
@@ -50,8 +109,8 @@ module.exports = function(app, passport) {
           const smtpTransport = nodemailer.createTransport({
             service: "SendGrid",
             auth: {
-              user: process.env.MAIL_USER,
-              pass: process.env.MAIL_PASS
+              user: "luistics",
+              pass: "test"
             }
           });
           const mailOptions = {
@@ -73,35 +132,13 @@ module.exports = function(app, passport) {
               "flashMessage",
               "An email has been sent to your account's email address"
             );
-            done(err, "done");
+            done(err);
           });
         }
       ],
       function(err) {
         if (err) return next(err);
         res.redirect("/forgot-password");
-      }
-    );
-  });
-
-  app.get("/reset:token", (req, res) => {
-    User.findOne(
-      {
-        resetPasswordToken: req.params.token,
-        resetPasswordExpires: { $gt: Date.now() }
-      },
-      function(err, user) {
-        if (err) console.log(err);
-        if (!user) {
-          req.flash(
-            "flashMessage",
-            "Password reset token has expired, or is invalid."
-          );
-          return res.redirect("/forgot-password");
-        }
-        res.render("reset", {
-          user: req.user
-        });
       }
     );
   });
@@ -126,37 +163,43 @@ module.exports = function(app, passport) {
             }
 
             user.local.password = req.body.password;
+            user.local.resetPasswordToken = undefined;
+            user.local.resetPasswordExpires = undefined;
+
+            user.save(function(err){
+              req.logIn(user, function(err){
+                done(err, user);
+              });
+            });
           }
         );
+      },
+      function(user, done){
+        let smtpTransport = nodemailer.createTransport({
+          service: "SendGrid",
+          auth:{
+            user: "luistics",
+            pass: "test"
+          }
+        });
+        let mailOptions = {
+          to: user.local.email,
+          from: "passwordreset@wdbears.com",
+          subject: "Your password has been changed.",
+          text: 'Hello,\n\n' +
+          'The password for your account at wdbears.me through ' + user.email + ' has just been changed.\n'
+        };
+        smtpTransport.sendMail(mailOptions, function(err) {
+          req.flash(
+            "flashMessage",
+            "Your password has been changed."
+          );
+          done(err);
+        });
       }
-    ]);
-  });
-
-  app.get("/memes", isLoggedIn, (req, res) => {
-    res.render("memes");
-  });
-
-  app.get("/quotes", isLoggedIn, (req, res) => {
-    Quote.find({}, function(err, quotes) {
-      if (err) {
-        console.log(err);
-      }
-      res.render("quotes", { allQuotes: quotes });
+    ], function(err){
+      res.redirect('/');
     });
-  });
-
-  app.get("/down", isLoggedIn, (req, res) => {
-    res.render("down");
-  });
-
-  // Talk with group about the login and register forms i.e. where they will be GET requesting to
-
-  app.get("/login", (req, res) => {
-    res.render("login");
-  });
-
-  app.get("/register", (req, res) => {
-    res.render("register");
   });
 
   app.post(
@@ -184,10 +227,6 @@ module.exports = function(app, passport) {
     })
   );
 
-  app.get("/logout", function(req, res) {
-    req.logOut();
-    res.redirect("/");
-  });
 
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {

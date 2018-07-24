@@ -65,7 +65,26 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
 
 // import defined routes, passing in our passport strategy and our defined web-app.
+
+
+
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.flashMessage = req.flash("flashMessage");
+  next();
+});
+
 require("./app/routes.js")(app, passport);
+
+app.use((req, res) =>{
+  res.status(404);
+  res.render("error/404", {title: "404: Error, File not Found", layout: false});
+});
+
+app.use(function(error, req, res, next){
+  res.status(500);
+  res.render("error/500", {title: "500: Internal Server Error", error: error, layout: false});
+});
 
 // app startup. If PORT is not defined, use port 3000. Log the port out to the console.
 // Normally, the app is started as defined in the README (node app.js). But Heroku is weird about it...
