@@ -187,7 +187,7 @@ module.exports = function(app, passport) {
           from: "passwordreset@wdbears.com",
           subject: "Your password has been changed.",
           text: 'Hello,\n\n' +
-          'The password for your account at wdbears.me through ' + user.email + ' has just been changed.\n'
+          'The password for your account at wdbears.me through ' + user.local.email + ' has just been changed.\n'
         };
         smtpTransport.sendMail(mailOptions, function(err) {
           req.flash(
