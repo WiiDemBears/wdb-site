@@ -1,5 +1,6 @@
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../app/models/user");
+const randomstring = require('randomstring');
 
 module.exports = function(passport) {
   passport.serializeUser(function(user, done) {
@@ -20,7 +21,6 @@ module.exports = function(passport) {
         passwordField: "password",
         passReqToCallback: true
       },
-
       function(req, username, password, done) {
         process.nextTick(function() {
           User.findOne(
@@ -47,7 +47,13 @@ module.exports = function(passport) {
                   req.flash("flashMessage", "That email is already registered.")
                 );
               } else {
+
+                //generate random token
+                const secretToken = randomstring.generate();
                 const newUser = new User();
+
+                newUser.local.secretToken = secretToken;
+                newUser.local.confirmed = false;
                 newUser.local.username = username;
                 newUser.local.username_lower = username.toLowerCase();
                 newUser.local.password = newUser.generateHash(password);
@@ -55,10 +61,16 @@ module.exports = function(passport) {
                 newUser.local.firstname = req.body.firstname;
                 newUser.local.lastname = req.body.lastname;
 
-                newUser.save(function(err) {
-                  if (err) throw err;
-                  return done(null, newUser);
-                });
+                newUser.save();
+                
+                return done(
+                  null,
+                  newUser,
+                  req.flash(
+                    "flashMessage",
+                    "Check your email for a verification code before you may use the full site."
+                  )
+                );
               }
             }
           );

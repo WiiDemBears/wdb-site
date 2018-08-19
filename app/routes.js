@@ -15,7 +15,7 @@ module.exports = function(app, passport) {
 
   app.get("/profile",  (req, res) => {
     res.render("pages/profile");
-  });
+  }); 
 
   app.get("/forgot-password", (req, res) => {
     res.render("authentication/forgot-password", { user: req.user });
@@ -25,11 +25,11 @@ module.exports = function(app, passport) {
     res.rednder("authentication/reset");
   });
   
-  app.get("/memes", isLoggedIn, (req, res) => {
+  app.get("/memes", isLoggedIn, isConfirmed, (req, res) => {
     res.render("pages/memes");
   });
   
-  app.get("/quotes", isLoggedIn, (req, res) => {
+  app.get("/quotes", isLoggedIn, isConfirmed, (req, res) => {
     Quote.find({}, function(err, quotes) {
       if (err) {
         console.log(err);
@@ -38,7 +38,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.get("/down", isLoggedIn, (req, res) => {
+  app.get("/down", isLoggedIn, isConfirmed, (req, res) => {
     res.render("pages/down");
   });
 
@@ -221,17 +221,24 @@ module.exports = function(app, passport) {
   app.post(
     "/register",
     passport.authenticate("local-register", {
-      successRedirect: "/",
+      successRedirect: "/login",
       failureRedirect: "/register",
       failureFlash: true
     })
   );
-
 
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
     }
     res.redirect("/login");
+  }
+
+  function isConfirmed(req, res, next){
+    if(req.user.local.confirmed){
+      return next();
+    }
+
+    res.redirect("/verify");
   }
 };

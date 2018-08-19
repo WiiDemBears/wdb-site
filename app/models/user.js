@@ -20,7 +20,9 @@ const userSchema = new Schema({
     password: String,
     friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
     resetPasswordToken: String,
-    resetPasswordExpires: Date
+    resetPasswordExpires: Date,
+    secretToken: String,
+    confirmed: {type: Boolean, default: false},
   }
 });
 
