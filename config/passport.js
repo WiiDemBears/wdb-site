@@ -27,7 +27,7 @@ module.exports = async function(passport) {
           await User.findOne(
             {
               $or: [
-                { "local.username_lower": username.toLowerCase() },
+                { "local.username": username.toLowerCase() },
                 { "local.email": req.body.email }
               ]
             },
@@ -35,7 +35,7 @@ module.exports = async function(passport) {
               if (err) return done(err);
 
               if (user) {
-                if (user.local.username_lower === username.toLowerCase()) {
+                if (user.local.username === username.toLowerCase()) {
                   return done(
                     null,
                     false,
@@ -55,8 +55,7 @@ module.exports = async function(passport) {
 
                 newUser.local.secretToken = secretToken;
                 newUser.local.confirmed = false;
-                newUser.local.username = username;
-                newUser.local.username_lower = username.toLowerCase();
+                newUser.local.username = username.toLowerCase();
                 newUser.local.password = newUser.generateHash(password);
                 newUser.local.email = req.body.email;
                 newUser.local.firstname = req.body.firstname;
@@ -64,7 +63,7 @@ module.exports = async function(passport) {
 
                 await newUser.save();
                 
-                return done(
+                await done(
                   null,
                   newUser,
                   req.flash(
@@ -90,7 +89,7 @@ module.exports = async function(passport) {
       },
 
       async function(req, username, password, done) {
-        await User.findOne({ "local.username": username }, function(err, user) {
+        await User.findOne({ "local.username": username.toLowerCase() }, async function(err, user) {
           if (err) return done(err);
 
           // for deploy, change this to one large message. This should not tell the user whether the username or password is the incorrect key.
@@ -115,7 +114,7 @@ module.exports = async function(passport) {
               )
             );
 
-          return done(null, user);
+          await done(null, user);
         });
       }
     )

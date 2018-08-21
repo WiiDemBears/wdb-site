@@ -59,11 +59,11 @@ module.exports = function(app, passport) {
     res.render("authentication/register");
   });
 
-  app.get("/reset:token", async (req, res) => {
-    await User.findOne(
+  app.get("/reset/:token", (req, res) => {
+    User.findOne(
       {
-        resetPasswordToken: req.params.token,
-        resetPasswordExpires: { $gt: Date.now() }
+        "local.resetPasswordToken": req.params.token,
+        "local.resetPasswordExpires": { $gt: Date.now() }
       },
       function(err, user) {
         if (err) console.log(err);
@@ -93,7 +93,7 @@ module.exports = function(app, passport) {
           });
         },
         function(token, done) {
-          User.findOne({ "local.email": req.body.email }, function(err, user) {
+          User.findOne({ "local.email": req.body.email }, async function(err, user) {
             if (err) return err;
             if (!user) {
               return done(null, false, {
@@ -104,7 +104,7 @@ module.exports = function(app, passport) {
             user.local.resetPasswordToken = token;
             user.local.resetPasswordExpires = Date.now() + 3600000;
 
-            user.save(function(err) {
+            await user.save(function(err) {
               done(err, token, user);
             });
           });
@@ -114,7 +114,7 @@ module.exports = function(app, passport) {
             service: "SendGrid",
             auth: {
               user: "luistics",
-              pass: "test"
+              pass: "test%"
             }
           });
           const mailOptions = {
@@ -147,17 +147,17 @@ module.exports = function(app, passport) {
     );
   });
 
-  app.post("/reset:token", (req, res) => {
+  app.post("/reset/:token", (req, res) => {
     async.waterfall([
       function(done) {
         User.findOne(
           {
-            resetPasswordToken: req.params.token,
-            resetPasswordExpires: { $gt: Date.now() }
+            "local.resetPasswordToken" : req.params.token,
+            "local.resetPasswordExpires" : { $gt: Date.now() }
           },
           function(err, user) {
             if (err) console.log(err);
-
+            
             if (!user) {
               req.flash(
                 "flashMessage",
@@ -165,7 +165,7 @@ module.exports = function(app, passport) {
               );
               return res.redirect("back");
             }
-
+      
             user.local.password = req.body.password;
             user.local.resetPasswordToken = undefined;
             user.local.resetPasswordExpires = undefined;
@@ -175,8 +175,7 @@ module.exports = function(app, passport) {
                 done(err, user);
               });
             });
-          }
-        );
+          });
       },
       function(user, done){
         let smtpTransport = nodemailer.createTransport({
@@ -225,7 +224,7 @@ module.exports = function(app, passport) {
   app.post(
     "/register",
     passport.authenticate("local-register", {
-      successRedirect: "/login",
+      successRedirect: "/verify",
       failureRedirect: "/register",
       failureFlash: true
     })
