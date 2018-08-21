@@ -38,6 +38,10 @@ module.exports = function(app, passport) {
     });
   });
 
+  app.get("/verify", isLoggedIn, (req, res) => {
+    res.render("authentication/verify");
+  })
+
   app.get("/down", isLoggedIn, isConfirmed, (req, res) => {
     res.render("pages/down");
   });
