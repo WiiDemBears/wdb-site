@@ -42,9 +42,9 @@ module.exports = function(app, passport) {
     res.render("pages/down");
   });
 
-  app.get("/logout", function(req, res) {
-    req.logOut();
-    res.redirect("/");
+  app.get("/logout", async function(req, res) {
+    await req.logOut();
+    await res.redirect("/");
   });
 
   app.get("/login", (req, res) => {
@@ -55,8 +55,8 @@ module.exports = function(app, passport) {
     res.render("authentication/register");
   });
 
-  app.get("/reset:token", (req, res) => {
-    User.findOne(
+  app.get("/reset:token", async (req, res) => {
+    await User.findOne(
       {
         resetPasswordToken: req.params.token,
         resetPasswordExpires: { $gt: Date.now() }

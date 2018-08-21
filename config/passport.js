@@ -1,14 +1,15 @@
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../app/models/user");
 const randomstring = require('randomstring');
+const async = require('async');
 
-module.exports = function(passport) {
-  passport.serializeUser(function(user, done) {
-    done(null, user.id);
+module.exports = async function(passport) {
+  passport.serializeUser(async function(user, done) {
+    await done(null, user.id);
   });
 
-  passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
+  passport.deserializeUser(async function(id, done) {
+    await User.findById(id, function(err, user) {
       done(err, user);
     });
   });
@@ -21,16 +22,16 @@ module.exports = function(passport) {
         passwordField: "password",
         passReqToCallback: true
       },
-      function(req, username, password, done) {
-        process.nextTick(function() {
-          User.findOne(
+      async function(req, username, password, done) {
+        await process.nextTick(async function() {
+          await User.findOne(
             {
               $or: [
                 { "local.username_lower": username.toLowerCase() },
                 { "local.email": req.body.email }
               ]
             },
-            function(err, user) {
+            async function(err, user) {
               if (err) return done(err);
 
               if (user) {
@@ -61,7 +62,7 @@ module.exports = function(passport) {
                 newUser.local.firstname = req.body.firstname;
                 newUser.local.lastname = req.body.lastname;
 
-                newUser.save();
+                await newUser.save();
                 
                 return done(
                   null,
@@ -88,8 +89,8 @@ module.exports = function(passport) {
         passReqToCallback: true
       },
 
-      function(req, username, password, done) {
-        User.findOne({ "local.username": username }, function(err, user) {
+      async function(req, username, password, done) {
+        await User.findOne({ "local.username": username }, function(err, user) {
           if (err) return done(err);
 
           // for deploy, change this to one large message. This should not tell the user whether the username or password is the incorrect key.
