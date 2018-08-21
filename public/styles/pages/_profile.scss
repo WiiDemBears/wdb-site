@@ -1,0 +1,54 @@
+#profile-page {
+  padding-top: 70px;
+}
+
+#pfp-container {
+  text-align: center;
+}
+
+#pfp {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+#name {
+  text-align: center;
+  font-size: 32px;
+}
+
+#username {
+  font-size: 20px;
+  font-style: italic;
+}
+
+.friends-list,
+.events-list {
+  padding: 20px;
+}
+
+#friend-pfp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+ul li {
+  display: inline;
+}
+
+#card-container {
+  width: 95%;
+}
+
+.events-list {
+  margin: 0 auto;
+}
+
+#friend-search-bar-container {
+  text-align: center;
+}
+
+#friend-search-bar {
+  width: 75%;
+}
