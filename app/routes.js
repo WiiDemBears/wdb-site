@@ -96,11 +96,9 @@ module.exports = function(app, passport) {
         },
         function(token, done) {
           User.findOne({ "local.email": req.body.email }, async function(err, user) {
-            if (err) return err;
             if (!user) {
-              return done(null, false, {
-                message: "No account with that email address exists."
-              });
+              req.flash('flashMessage', 'No account with that email address exists')
+              return res.redirect('/forgot-password');
             }
 
             user.local.resetPasswordToken = token;
