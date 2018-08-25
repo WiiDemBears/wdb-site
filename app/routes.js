@@ -5,6 +5,8 @@ const async = require("async");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
+let mailConf = require("../config/mail.js");
+
 module.exports = function(app, passport) {
 
   /* GET ROUTES */
@@ -94,11 +96,9 @@ module.exports = function(app, passport) {
         },
         function(token, done) {
           User.findOne({ "local.email": req.body.email }, async function(err, user) {
-            if (err) return err;
             if (!user) {
-              return done(null, false, {
-                message: "No account with that email address exists."
-              });
+              req.flash('flashMessage', 'No account with that email address exists')
+              return res.redirect('/forgot-password');
             }
 
             user.local.resetPasswordToken = token;
@@ -113,8 +113,8 @@ module.exports = function(app, passport) {
           const smtpTransport = nodemailer.createTransport({
             service: "SendGrid",
             auth: {
-              user: "luistics",
-              pass: "test%"
+              user: mailConf.user,
+              pass: mailConf.pass
             }
           });
           const mailOptions = {
@@ -134,7 +134,7 @@ module.exports = function(app, passport) {
           smtpTransport.sendMail(mailOptions, function(err) {
             req.flash(
               "flashMessage",
-              "An email has been sent to your account's email address"
+              "Check your email address for further instruction."
             );
             done(err);
           });
@@ -166,7 +166,7 @@ module.exports = function(app, passport) {
               return res.redirect("back");
             }
       
-            user.local.password = req.body.password;
+            user.local.password = user.generateHash(req.body.password);
             user.local.resetPasswordToken = undefined;
             user.local.resetPasswordExpires = undefined;
 
@@ -181,8 +181,8 @@ module.exports = function(app, passport) {
         let smtpTransport = nodemailer.createTransport({
           service: "SendGrid",
           auth:{
-            user: "luistics",
-            pass: "test"
+            user: mailConf.user,
+            pass: mailConf.pass
           }
         });
         let mailOptions = {
