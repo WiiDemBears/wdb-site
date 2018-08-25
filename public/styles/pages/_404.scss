@@ -1,3 +1,12 @@
 #error-page {
-  font-size: 14vh;
+  font-size: 6vh;
+  text-align: center;
+  #bella {
+    width: 250px;
+    border-radius: 1000px;
+    padding: 20px;
+  }
+  #error-message {
+    font-size: 4vh;
+  }
 }
