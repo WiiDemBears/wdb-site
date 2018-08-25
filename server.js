@@ -43,6 +43,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 
+
+
 app.use(
   session({
     secret: "suchsecretwowe!",
@@ -74,7 +76,7 @@ require("./app/routes.js")(app, passport);
 
 app.use((req, res) =>{
   res.status(404);
-  res.render("error/404", {title: "404: Error, File not Found", layout: false});
+  res.render("error/404", {title: "404: Error, File not Found"});
 });
 
 app.use(function(error, req, res, next){

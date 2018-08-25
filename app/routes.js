@@ -136,7 +136,7 @@ module.exports = function(app, passport) {
           smtpTransport.sendMail(mailOptions, function(err) {
             req.flash(
               "flashMessage",
-              "An email has been sent to your account's email address"
+              "Check your email address for further instruction."
             );
             done(err);
           });
