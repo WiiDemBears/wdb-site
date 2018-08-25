@@ -5,6 +5,8 @@ const async = require("async");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
+let mailConf = require("../config/mail.js");
+
 module.exports = function(app, passport) {
 
   /* GET ROUTES */
@@ -113,8 +115,8 @@ module.exports = function(app, passport) {
           const smtpTransport = nodemailer.createTransport({
             service: "SendGrid",
             auth: {
-              user: "luistics",
-              pass: "test%"
+              user: mailConf.user,
+              pass: mailConf.pass
             }
           });
           const mailOptions = {
@@ -181,8 +183,8 @@ module.exports = function(app, passport) {
         let smtpTransport = nodemailer.createTransport({
           service: "SendGrid",
           auth:{
-            user: "luistics",
-            pass: "test"
+            user: mailConf.user,
+            pass: mailConf.pass
           }
         });
         let mailOptions = {

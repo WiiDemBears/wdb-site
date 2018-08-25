@@ -43,10 +43,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 
-/*
-TODO : MAKE DB CONFIG A MODULE
-*/
-
 app.use(
   session({
     secret: "suchsecretwowe!",
