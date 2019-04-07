@@ -1,4 +1,4 @@
-# WiiDemBears.Down
+# WiiDemBears
 
 ## "Down" Web App
 
